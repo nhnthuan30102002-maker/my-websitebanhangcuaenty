@@ -49,9 +49,7 @@
           <th>Xóa</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- Danh sách sản phẩm sẽ hiển thị ở đây -->
-      </tbody>
+      <tbody></tbody>
     </table>
     <div class="total" id="total">Tổng tiền: 0đ</div>
     <button class="clear-cart" onclick="clearCart()">Xóa tất cả</button>
@@ -63,24 +61,28 @@
 
   <script>
     function loadCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       const tbody = document.querySelector('#cart-table tbody');
       tbody.innerHTML = '';
-
       let totalPrice = 0;
 
+      if(cart.length === 0){
+        tbody.innerHTML = `<tr><td colspan="5">Giỏ hàng trống</td></tr>`;
+        document.getElementById('total').textContent = 'Tổng tiền: 0đ';
+        return;
+      }
+
       cart.forEach((item, index) => {
-        const priceNumber = parseInt(item.price.replace(/\D/g, '')); // loại bỏ ký tự ngoài số
-        const itemTotal = priceNumber * (item.quantity || 1);
+        const itemTotal = item.price * item.quantity;
         totalPrice += itemTotal;
 
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${item.name}</td>
-          <td>${item.price}</td>
+          <td>${item.price.toLocaleString()}đ</td>
           <td class="quantity">
             <button onclick="changeQuantity(${index}, -1)">-</button>
-            ${item.quantity || 1}
+            ${item.quantity}
             <button onclick="changeQuantity(${index}, 1)">+</button>
           </td>
           <td>${itemTotal.toLocaleString()}đ</td>
@@ -89,17 +91,11 @@
         tbody.appendChild(row);
       });
 
-      if(cart.length === 0){
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Giỏ hàng trống</td></tr>`;
-        document.getElementById('total').textContent = 'Tổng tiền: 0đ';
-      } else {
-        document.getElementById('total').textContent = 'Tổng tiền: ' + totalPrice.toLocaleString() + 'đ';
-      }
+      document.getElementById('total').textContent = 'Tổng tiền: ' + totalPrice.toLocaleString() + 'đ';
     }
 
     function changeQuantity(index, delta){
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if(!cart[index].quantity) cart[index].quantity = 1;
       cart[index].quantity += delta;
       if(cart[index].quantity < 1) cart[index].quantity = 1;
       localStorage.setItem('cart', JSON.stringify(cart));
