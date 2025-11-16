@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoa sinh nhật - Entyshop</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f7f7f7; color: #333; }
+    header { background: #555; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 24px; }
+    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px; }
+    .product { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden; text-align: center; transition: transform 0.2s; }
+    .product:hover { transform: scale(1.03); }
+    .product img { width: 100%; height: 220px; object-fit: cover; }
+    .product h3 { margin: 10px 0; }
+    .product p { color: #777; margin-bottom: 10px; }
+    .product button { background: #555; color: white; border: none; padding: 10px 20px; cursor: pointer; margin-bottom: 15px; border-radius: 5px; }
+    .product button:hover { background: #333; }
+
+    footer { background: #555; color: white; text-align: center; padding: 15px; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Entyshop</h1>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="birthday.html">Hoa sinh nhật</a>
+    <a href="bouquet.html">Bó hoa</a>
+    <a href="basket.html">Giỏ hoa</a>
+    <a href="contact.html">Liên hệ</a>
+    <a href="cart.html">Giỏ hàng</a>
+  </nav>
+</header>
+
+<section class="products">
+  <div class="product">
+    <img src="https://picsum.photos/400/300?random=5" alt="Hoa sinh nhật 1">
+    <h3>Bó hoa sinh nhật đỏ</h3>
+    <p>200.000đ</p>
+    <button onclick="addToCart('Bó hoa sinh nhật đỏ', 200000)">Thêm vào giỏ</button>
+  </div>
+  <div class="product">
+    <img src="https://picsum.photos/400/300?random=6" alt="Hoa sinh nhật 2">
+    <h3>Bó hoa sinh nhật hồng</h3>
+    <p>250.000đ</p>
+    <button onclick="addToCart('Bó hoa sinh nhật hồng', 250000)">Thêm vào giỏ</button>
+  </div>
+  <div class="product">
+    <img src="https://picsum.photos/400/300?random=7" alt="Hoa sinh nhật 3">
+    <h3>Bó hoa sinh nhật vàng</h3>
+    <p>300.000đ</p>
+    <button onclick="addToCart('Bó hoa sinh nhật vàng', 300000)">Thêm vào giỏ</button>
+  </div>
+</section>
+
+<footer>
+  © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+</footer>
+
+<script>
+function addToCart(name, price){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let existing = cart.find(item => item.name === name);
+  if(existing){ existing.quantity +=1; } else { cart.push({name, price, quantity:1}); }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " đã được thêm vào giỏ hàng!");
+}
+</script>
+
+</body>
+</html>
