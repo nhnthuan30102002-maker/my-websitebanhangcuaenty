@@ -6,46 +6,49 @@
   <title>Entyshop - Cửa hàng hoa tươi</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Arial', sans-serif; background: #f7f7f7; color: #333; }
+    body { font-family: 'Arial', sans-serif; background: #f0f8ff; color: #333; }
 
+    /* Header */
     header {
-      background: #555;
-      color: white;
+      background: #2e86c1; /* xanh đậm */
+      color: #ffc0cb; /* hồng nhạt */
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 3px solid #5dade2; /* xanh nhạt viền */
     }
     header h1 { font-size: 24px; letter-spacing: 1px; }
     nav a {
-      color: white;
+      color: #ffc0cb;
       margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
     }
-    nav a:hover { text-decoration: underline; }
+    nav a:hover { color: #fff; text-decoration: underline; }
 
     /* Banner */
-   .banner {
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-shadow: 2px 2px 4px #000;
-  font-size: 32px;
-  font-weight: bold;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 1s ease-in-out; 
-}
+    .banner {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #3a7bd5; /* xanh lam */
+      color: #ffc0cb; /* hồng nhạt */
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 10px;
+      margin: 20px 40px;
+      text-shadow: 1px 1px 2px #00000050;
+    }
 
     /* Tiêu đề từng phần */
     .section-title {
       text-align: center;
       margin: 40px 0 20px 0;
       font-size: 28px;
-      color: #555;
+      color: #2e86c1; /* xanh đậm */
     }
 
     /* Lưới sản phẩm */
@@ -56,158 +59,8 @@
       padding: 0 40px 40px 40px;
     }
 
-    /* Sản phẩm */
-    .product {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .product:hover { transform: scale(1.03); }
-    .product img { width: 100%; height: 200px; object-fit: cover; } /* giảm chiều cao */
-    .product h3 { margin: 10px 0; }
-    .product p { color: #777; margin-bottom: 10px; }
-    .product button {
-      background: #555;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      margin-bottom: 15px;
-      border-radius: 5px;
-    }
-    .product button:hover { background: #333; }
+    /* Sản phẩm *
 
-    /* Footer */
-    footer {
-      background: #555;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: 40px;
-    }
-
-    /* Responsive cho màn hình nhỏ */
-    @media screen and (max-width: 768px) {
-      .banner {
-        height: 200px;
-        font-size: 24px;
-      }
-      .products {
-        padding: 0 20px 20px 20px;
-        gap: 15px;
-      }
-      .product img {
-        height: 150px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Entyshop</h1>
-    <nav>
-      <a href="index.html">Trang chủ</a>
-      <a href="hoasinhnhat.html">Hoa sinh nhật</a>
-      <a href="bohoa.html">Bó hoa</a>
-      <a href="giohoa.html">Giỏ hoa</a>
-      <a href="contact.html">Liên hệ</a>
-      <a href="cart.html">Giỏ hàng</a>
-    </nav>
-  </header>
-
-  <div class="banner">
-    Vườn hoa Entyshop 🌸
-  </div>
-
-  <!-- Hoa sinh nhật -->
-  <div class="section-title">Hoa sinh nhật</div>
-  <section class="products">
-    <div class="product">
-      <img src="images/hoasinhnhat1.jpg" alt="Bó hoa sinh nhật đỏ">
-      <h3>Bó hoa sinh nhật đỏ</h3>
-      <p>200.000đ</p>
-      <button onclick="addToCart('Bó hoa sinh nhật đỏ', 200000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/hoasinhnhat2.jpg" alt="Bó hoa sinh nhật hồng">
-      <h3>Bó hoa sinh nhật hồng</h3>
-      <p>250.000đ</p>
-      <button onclick="addToCart('Bó hoa sinh nhật hồng', 250000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/hoasinhnhat3.jpg" alt="Bó hoa sinh nhật vàng">
-      <h3>Bó hoa sinh nhật vàng</h3>
-      <p>300.000đ</p>
-      <button onclick="addToCart('Bó hoa sinh nhật vàng', 300000)">Thêm vào giỏ</button>
-    </div>
-  </section>
-
-  <!-- Bó hoa -->
-  <div class="section-title">Bó hoa</div>
-  <section class="products">
-    <div class="product">
-      <img src="images/bohoa1.jpg" alt="Bó hoa hồng đỏ">
-      <h3>Bó hoa hồng đỏ</h3>
-      <p>250.000đ</p>
-      <button onclick="addToCart('Bó hoa hồng đỏ', 250000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/bohoa2.jpg" alt="Bó hoa lan tím">
-      <h3>Bó hoa lan tím</h3>
-      <p>400.000đ</p>
-      <button onclick="addToCart('Bó hoa lan tím', 400000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/bohoa3.jpg" alt="Bó hoa tulip vàng">
-      <h3>Bó hoa tulip vàng</h3>
-      <p>300.000đ</p>
-      <button onclick="addToCart('Bó hoa tulip vàng', 300000)">Thêm vào giỏ</button>
-    </div>
-  </section>
-
-  <!-- Giỏ hoa -->
-  <div class="section-title">Giỏ hoa</div>
-  <section class="products">
-    <div class="product">
-      <img src="images/giohoa1.jpg" alt="Giỏ hoa hồng đỏ">
-      <h3>Giỏ hoa hồng đỏ</h3>
-      <p>350.000đ</p>
-      <button onclick="addToCart('Giỏ hoa hồng đỏ', 350000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/giohoa2.jpg" alt="Giỏ hoa lan tím">
-      <h3>Giỏ hoa lan tím</h3>
-      <p>450.000đ</p>
-      <button onclick="addToCart('Giỏ hoa lan tím', 450000)">Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="images/giohoa3.jpg" alt="Giỏ hoa tulip vàng">
-      <h3>Giỏ hoa tulip vàng</h3>
-      <p>400.000đ</p>
-      <button onclick="addToCart('Giỏ hoa tulip vàng', 400000)">Thêm vào giỏ</button>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-  </footer>
-
-  <script>
-    function addToCart(name, price) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      let existing = cart.find(item => item.name === name);
-      if(existing){
-        existing.quantity += 1;
-      } else {
-        cart.push({ name, price, quantity: 1 });
-      }
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(name + " đã được thêm vào giỏ hàng!");
-    }
   </script>
 
 </body>
