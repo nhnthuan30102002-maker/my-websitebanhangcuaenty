@@ -77,6 +77,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>Entyshop</h1>
     <nav>
@@ -95,50 +96,35 @@
       <img src="https://picsum.photos/400/300?random=2" alt="Hoa hồng">
       <h3>Hoa Hồng Đỏ</h3>
       <p>250.000đ</p>
-      <button>Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="https://picsum.photos/400/300?random=3" alt="Hoa tulip">
-      <h3>Hoa Tulip Vàng</h3>
-      <p>300.000đ</p>
-      <button>Thêm vào giỏ</button>
-    </div>
-    <div class="product">
-      <img src="https://picsum.photos/400/300?random=4" alt="Hoa lan">
-      <h3>Hoa Lan Tím</h3>
-      <p>450.000đ</p>
-      <button>Thêm vào giỏ</button>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-  </footer>
-    <section class="products">
-    <div class="product">
-      <img src="https://picsum.photos/400/300?random=2" alt="Hoa hồng">
-      <h3>Hoa Hồng Đỏ</h3>
-      <p>250.000đ</p>
       <button onclick="addToCart('Hoa Hồng Đỏ', '250.000đ')">Thêm vào giỏ</button>
     </div>
-    ...
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=3" alt="Hoa Tulip">
+      <h3>Hoa Tulip Vàng</h3>
+      <p>300.000đ</p>
+      <button onclick="addToCart('Hoa Tulip Vàng', '300.000đ')">Thêm vào giỏ</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=4" alt="Hoa Lan">
+      <h3>Hoa Lan Tím</h3>
+      <p>450.000đ</p>
+      <button onclick="addToCart('Hoa Lan Tím', '450.000đ')">Thêm vào giỏ</button>
+    </div>
   </section>
 
   <footer>
     © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </footer>
 
-  <!-- ====== THÊM SCRIPT Ở ĐÂY ====== -->
+  <!-- Script giỏ hàng -->
   <script>
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
       cart.push({ name, price });
-
       localStorage.setItem("cart", JSON.stringify(cart));
-
       alert(name + " đã được thêm vào giỏ hàng!");
     }
   </script>
+
 </body>
 </html>
