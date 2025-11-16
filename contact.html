@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ - Entyshop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: #555;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 24px; }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      background: #f1f1f1;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      background: #555;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .contact-form button:hover {
+      background: #333;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #555;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Entyshop</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2>Liên hệ với chúng tôi</h2>
+
+    <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn trong việc lựa chọn bó hoa, lẵng hoa, hoa đi đám… Để được tư vấn chi tiết và đặt hàng, vui lòng liên hệ với chúng tôi qua các phương thức sau:</p>
+
+    <div class="contact-info">
+      <p>Hotline 1: 0979.424.145</p>
+      <p>Hotline 2: 0989.345.273</p>
+      <p>Zalo: 0979.424.145</p>
+      <p>Email: <a href="mailto:hoatuoimymy1202@gmail.com">hoatuoimymy1202@gmail.com</a></p>
+      <p>Website: <a href="https://hoatuoimymy.com/" target="_blank">hoatuoimymy.com</a></p>
+    </div>
+
+    <p>Chúng tôi cam kết mang đến cho bạn những sản phẩm hoa đẹp nhất và dịch vụ tận tâm nhất. Hãy liên hệ với chúng tôi ngay để được tư vấn và đặt hàng, và để chúng tôi cùng bạn tạo nên những khoảnh khắc tuyệt vời nhất.</p>
+
+    <!-- Form liên hệ (tùy chọn, chỉ dùng JS alert để minh họa) -->
+    <div class="contact-form">
+      <h3>Gửi tin nhắn cho chúng tôi</h3>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <textarea id="message" placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+      <button onclick="sendMessage()">Gửi</button>
+    </div>
+  </div>
+
+  <footer>© 2025 Entyshop</footer>
+
+  <script>
+    function sendMessage() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if(name && email && message){
+        alert('Cảm ơn ' + name + '! Chúng tôi đã nhận được tin nhắn của bạn.');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Vui lòng điền đầy đủ thông tin trước khi gửi.');
+      }
+    }
+  </script>
+</body>
+</html>
