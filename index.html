@@ -26,17 +26,19 @@
     nav a:hover { text-decoration: underline; }
 
     /* Banner */
-    .banner {
-      background: url('./images/banner.jpg') center/cover no-repeat;
-      height: 300px; /* giảm chiều cao */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 2px 2px 4px #000;
-      font-size: 32px; /* giảm font */
-      font-weight: bold;
-    }
+   .banner {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+  font-size: 32px;
+  font-weight: bold;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out; 
+}
 
     /* Tiêu đề từng phần */
     .section-title {
