@@ -37,11 +37,18 @@
       font-weight: bold;
     }
 
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px 0;
+      font-size: 28px;
+      color: #555;
+    }
+
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 40px;
+      padding: 0 40px 40px 40px;
     }
 
     .product {
@@ -81,12 +88,12 @@
   <header>
     <h1>Entyshop</h1>
     <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="hoasinhnhat.html">Hoa sinh nhật</a>
-    <a href="bohoa.html">Bó hoa</a>
-    <a href="giohoa.html">Giỏ hoa</a>
-    <a href="contact.html">Liên hệ</a>
-    <a href="cart.html">Giỏ hàng</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="hoasinhnhat.html">Hoa sinh nhật</a>
+      <a href="bohoa.html">Bó hoa</a>
+      <a href="giohoa.html">Giỏ hoa</a>
+      <a href="contact.html">Liên hệ</a>
+      <a href="cart.html">Giỏ hàng</a>
     </nav>
   </header>
 
@@ -94,24 +101,72 @@
     Vườn hoa Entyshop 🌸
   </div>
 
+  <!-- Hoa sinh nhật -->
+  <div class="section-title">Hoa sinh nhật</div>
   <section class="products">
     <div class="product">
-      <img src="https://picsum.photos/400/300?random=2" alt="Hoa hồng">
-      <h3>Hoa Hồng Đỏ</h3>
+      <img src="https://picsum.photos/400/300?random=5" alt="Hoa sinh nhật 1">
+      <h3>Bó hoa sinh nhật đỏ</h3>
+      <p>200.000đ</p>
+      <button onclick="addToCart('Bó hoa sinh nhật đỏ', 200000)">Thêm vào giỏ</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=6" alt="Hoa sinh nhật 2">
+      <h3>Bó hoa sinh nhật hồng</h3>
       <p>250.000đ</p>
-      <button onclick="addToCart('Hoa Hồng Đỏ', 250000)">Thêm vào giỏ</button>
+      <button onclick="addToCart('Bó hoa sinh nhật hồng', 250000)">Thêm vào giỏ</button>
     </div>
     <div class="product">
-      <img src="https://picsum.photos/400/300?random=3" alt="Hoa Tulip">
-      <h3>Hoa Tulip Vàng</h3>
+      <img src="https://picsum.photos/400/300?random=7" alt="Hoa sinh nhật 3">
+      <h3>Bó hoa sinh nhật vàng</h3>
       <p>300.000đ</p>
-      <button onclick="addToCart('Hoa Tulip Vàng', 300000)">Thêm vào giỏ</button>
+      <button onclick="addToCart('Bó hoa sinh nhật vàng', 300000)">Thêm vào giỏ</button>
+    </div>
+  </section>
+
+  <!-- Bó hoa -->
+  <div class="section-title">Bó hoa</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=8" alt="Bó hoa 1">
+      <h3>Bó hoa hồng đỏ</h3>
+      <p>250.000đ</p>
+      <button onclick="addToCart('Bó hoa hồng đỏ', 250000)">Thêm vào giỏ</button>
     </div>
     <div class="product">
-      <img src="https://picsum.photos/400/300?random=4" alt="Hoa Lan">
-      <h3>Hoa Lan Tím</h3>
+      <img src="https://picsum.photos/400/300?random=9" alt="Bó hoa 2">
+      <h3>Bó hoa lan tím</h3>
+      <p>400.000đ</p>
+      <button onclick="addToCart('Bó hoa lan tím', 400000)">Thêm vào giỏ</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=10" alt="Bó hoa 3">
+      <h3>Bó hoa tulip vàng</h3>
+      <p>300.000đ</p>
+      <button onclick="addToCart('Bó hoa tulip vàng', 300000)">Thêm vào giỏ</button>
+    </div>
+  </section>
+
+  <!-- Giỏ hoa -->
+  <div class="section-title">Giỏ hoa</div>
+  <section class="products">
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=11" alt="Giỏ hoa 1">
+      <h3>Giỏ hoa hồng đỏ</h3>
+      <p>350.000đ</p>
+      <button onclick="addToCart('Giỏ hoa hồng đỏ', 350000)">Thêm vào giỏ</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=12" alt="Giỏ hoa 2">
+      <h3>Giỏ hoa lan tím</h3>
       <p>450.000đ</p>
-      <button onclick="addToCart('Hoa Lan Tím', 450000)">Thêm vào giỏ</button>
+      <button onclick="addToCart('Giỏ hoa lan tím', 450000)">Thêm vào giỏ</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=13" alt="Giỏ hoa 3">
+      <h3>Giỏ hoa tulip vàng</h3>
+      <p>400.000đ</p>
+      <button onclick="addToCart('Giỏ hoa tulip vàng', 400000)">Thêm vào giỏ</button>
     </div>
   </section>
 
@@ -122,15 +177,12 @@
   <script>
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      
-      // Kiểm tra nếu sản phẩm đã có trong giỏ, tăng số lượng
       let existing = cart.find(item => item.name === name);
       if(existing){
         existing.quantity += 1;
       } else {
         cart.push({ name, price, quantity: 1 });
       }
-
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(name + " đã được thêm vào giỏ hàng!");
     }
