@@ -81,8 +81,8 @@
   <header>
     <h1>Entyshop</h1>
     <nav>
-      <a href="#">Trang chủ</a>
-      <a href="#">Giỏ hàng</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="cart.html">Giỏ hàng</a>
       <a href="#">Liên hệ</a>
     </nav>
   </header>
@@ -96,19 +96,19 @@
       <img src="https://picsum.photos/400/300?random=2" alt="Hoa hồng">
       <h3>Hoa Hồng Đỏ</h3>
       <p>250.000đ</p>
-      <button onclick="addToCart('Hoa Hồng Đỏ', '250.000đ')">Thêm vào giỏ</button>
+      <button onclick="addToCart('Hoa Hồng Đỏ', 250000)">Thêm vào giỏ</button>
     </div>
     <div class="product">
       <img src="https://picsum.photos/400/300?random=3" alt="Hoa Tulip">
       <h3>Hoa Tulip Vàng</h3>
       <p>300.000đ</p>
-      <button onclick="addToCart('Hoa Tulip Vàng', '300.000đ')">Thêm vào giỏ</button>
+      <button onclick="addToCart('Hoa Tulip Vàng', 300000)">Thêm vào giỏ</button>
     </div>
     <div class="product">
       <img src="https://picsum.photos/400/300?random=4" alt="Hoa Lan">
       <h3>Hoa Lan Tím</h3>
       <p>450.000đ</p>
-      <button onclick="addToCart('Hoa Lan Tím', '450.000đ')">Thêm vào giỏ</button>
+      <button onclick="addToCart('Hoa Lan Tím', 450000)">Thêm vào giỏ</button>
     </div>
   </section>
 
@@ -116,11 +116,18 @@
     © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </footer>
 
-  <!-- Script giỏ hàng -->
   <script>
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ name, price });
+      
+      // Kiểm tra nếu sản phẩm đã có trong giỏ, tăng số lượng
+      let existing = cart.find(item => item.name === name);
+      if(existing){
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(name + " đã được thêm vào giỏ hàng!");
     }
