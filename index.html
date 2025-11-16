@@ -114,5 +114,31 @@
   <footer>
     © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </footer>
+    <section class="products">
+    <div class="product">
+      <img src="https://picsum.photos/400/300?random=2" alt="Hoa hồng">
+      <h3>Hoa Hồng Đỏ</h3>
+      <p>250.000đ</p>
+      <button onclick="addToCart('Hoa Hồng Đỏ', '250.000đ')">Thêm vào giỏ</button>
+    </div>
+    ...
+  </section>
+
+  <footer>
+    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+  </footer>
+
+  <!-- ====== THÊM SCRIPT Ở ĐÂY ====== -->
+  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push({ name, price });
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(name + " đã được thêm vào giỏ hàng!");
+    }
+  </script>
 </body>
 </html>
