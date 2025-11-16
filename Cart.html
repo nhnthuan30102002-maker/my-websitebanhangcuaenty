@@ -13,10 +13,15 @@
 
     .cart-container { padding: 40px; }
     table { width: 100%; border-collapse: collapse; background: white; }
-    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+    th, td { padding: 15px; text-align: center; border-bottom: 1px solid #ddd; }
     th { background: #555; color: white; }
     button { background: #555; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; }
     button:hover { background: #333; }
+    .quantity { display: flex; justify-content: center; align-items: center; }
+    .quantity button { margin: 0 5px; }
+
+    .total { text-align: right; margin-top: 20px; font-size: 18px; font-weight: bold; }
+    .clear-cart { margin-top: 15px; display: inline-block; }
 
     footer { background: #555; color: white; text-align: center; padding: 15px; margin-top: 40px; }
   </style>
@@ -39,13 +44,17 @@
         <tr>
           <th>Sản phẩm</th>
           <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
           <th>Xóa</th>
         </tr>
       </thead>
       <tbody>
-        <!-- danh sach hien thi san pham -->
+        <!-- Danh sách sản phẩm sẽ hiển thị ở đây -->
       </tbody>
     </table>
+    <div class="total" id="total">Tổng tiền: 0đ</div>
+    <button class="clear-cart" onclick="clearCart()">Xóa tất cả</button>
   </div>
 
   <footer>
@@ -58,29 +67,59 @@
       const tbody = document.querySelector('#cart-table tbody');
       tbody.innerHTML = '';
 
+      let totalPrice = 0;
+
       cart.forEach((item, index) => {
+        const priceNumber = parseInt(item.price.replace(/\D/g, '')); // loại bỏ ký tự ngoài số
+        const itemTotal = priceNumber * (item.quantity || 1);
+        totalPrice += itemTotal;
+
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${item.name}</td>
           <td>${item.price}</td>
+          <td class="quantity">
+            <button onclick="changeQuantity(${index}, -1)">-</button>
+            ${item.quantity || 1}
+            <button onclick="changeQuantity(${index}, 1)">+</button>
+          </td>
+          <td>${itemTotal.toLocaleString()}đ</td>
           <td><button onclick="removeItem(${index})">Xóa</button></td>
         `;
         tbody.appendChild(row);
       });
 
-      if(cart.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">Giỏ hàng trống</td></tr>`;
+      if(cart.length === 0){
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Giỏ hàng trống</td></tr>`;
+        document.getElementById('total').textContent = 'Tổng tiền: 0đ';
+      } else {
+        document.getElementById('total').textContent = 'Tổng tiền: ' + totalPrice.toLocaleString() + 'đ';
       }
     }
 
-    function removeItem(index) {
+    function changeQuantity(index, delta){
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if(!cart[index].quantity) cart[index].quantity = 1;
+      cart[index].quantity += delta;
+      if(cart[index].quantity < 1) cart[index].quantity = 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    function removeItem(index){
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.splice(index, 1);
       localStorage.setItem('cart', JSON.stringify(cart));
       loadCart();
     }
 
-    //load gio hang khi mo trang
+    function clearCart(){
+      if(confirm('Bạn có chắc muốn xóa toàn bộ giỏ hàng?')){
+        localStorage.removeItem('cart');
+        loadCart();
+      }
+    }
+
     window.onload = loadCart;
   </script>
 
