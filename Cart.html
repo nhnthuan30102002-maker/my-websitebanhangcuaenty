@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giỏ hàng</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    nav a { color:white; margin-right:20px; text-decoration:none; }
+    nav { background:#333; padding:15px; margin-bottom:20px; }
+    .item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    button { padding: 7px 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- MENU -->
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="cart.html">Giỏ hàng</a>
+    <a href="contact.html">Liên hệ</a>
+  </nav>
+
+  <h1>🛒 Giỏ hàng của bạn</h1>
+
+  <div id="cart-container"></div>
+
+  <button onclick="clearCart()">🗑 Xóa toàn bộ giỏ hàng</button>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function loadCart() {
+      let container = document.getElementById("cart-container");
+      container.innerHTML = "";
+
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Giỏ hàng đang trống...</p>";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        container.innerHTML += `
+          <div class="item">
+            <strong>${item}</strong>
+            <button onclick="removeItem(${index})">Xóa</button>
+          </div>
+        `;
+      });
+    }
+
+    function removeItem(i) {
+      cart.splice(i, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      cart = [];
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+
+  <script src="chat.js"></script>
+
+</body>
+</html>
