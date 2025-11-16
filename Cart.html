@@ -2,72 +2,87 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Giỏ hàng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng - Entyshop</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    nav a { color:white; margin-right:20px; text-decoration:none; }
-    nav { background:#333; padding:15px; margin-bottom:20px; }
-    .item {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
-    button { padding: 7px 10px; }
+    body { font-family: Arial, sans-serif; background: #f7f7f7; color: #333; margin: 0; padding: 0; }
+    header { background: #555; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 24px; }
+    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+
+    .cart-container { padding: 40px; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background: #555; color: white; }
+    button { background: #555; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; }
+    button:hover { background: #333; }
+
+    footer { background: #555; color: white; text-align: center; padding: 15px; margin-top: 40px; }
   </style>
 </head>
 <body>
 
-  <!-- MENU -->
-  <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="cart.html">Giỏ hàng</a>
-    <a href="contact.html">Liên hệ</a>
-  </nav>
+  <header>
+    <h1>Entyshop</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+  </header>
 
-  <h1>🛒 Giỏ hàng của bạn</h1>
+  <div class="cart-container">
+    <h2>Giỏ hàng của bạn</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Giá</th>
+          <th>Xóa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- danh sach hien thi san pham -->
+      </tbody>
+    </table>
+  </div>
 
-  <div id="cart-container"></div>
-
-  <button onclick="clearCart()">🗑 Xóa toàn bộ giỏ hàng</button>
+  <footer>
+    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+  </footer>
 
   <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
     function loadCart() {
-      let container = document.getElementById("cart-container");
-      container.innerHTML = "";
-
-      if (cart.length === 0) {
-        container.innerHTML = "<p>Giỏ hàng đang trống...</p>";
-        return;
-      }
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
 
       cart.forEach((item, index) => {
-        container.innerHTML += `
-          <div class="item">
-            <strong>${item}</strong>
-            <button onclick="removeItem(${index})">Xóa</button>
-          </div>
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.price}</td>
+          <td><button onclick="removeItem(${index})">Xóa</button></td>
         `;
+        tbody.appendChild(row);
       });
+
+      if(cart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">Giỏ hàng trống</td></tr>`;
+      }
     }
 
-    function removeItem(i) {
-      cart.splice(i, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
       loadCart();
     }
 
-    function clearCart() {
-      localStorage.removeItem("cart");
-      cart = [];
-      loadCart();
-    }
-
-    loadCart();
+    //load gio hang khi mo trang
+    window.onload = loadCart;
   </script>
-
-  <script src="chat.js"></script>
 
 </body>
 </html>
