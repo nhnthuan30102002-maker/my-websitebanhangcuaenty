@@ -175,6 +175,124 @@ document.querySelectorAll(".add-to-cart").forEach(btn=>{
   });
 });
 </script>
+<!-- CHAT WIDGET -->
+<style>
+  #chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+  }
 
+  #chat-header {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  #chat-messages {
+    padding: 10px;
+    height: 220px;
+    overflow-y: auto;
+    font-size: 14px;
+    background: #fafafa;
+  }
+
+  #chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+
+  #chat-input button {
+    padding: 10px 15px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Chat icon */
+  #chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+</style>
+
+<div id="chat-icon">💬</div>
+
+<div id="chat-box">
+  <div id="chat-header">Hỗ trợ Entyshop</div>
+  <div id="chat-messages">
+    <div><b>Bot:</b> Xin chào! Tôi có thể giúp gì cho bạn hôm nay? 😊</div>
+  </div>
+  <div id="chat-input">
+    <input id="chatText" type="text" placeholder="Nhập tin nhắn...">
+    <button id="sendBtn">Gửi</button>
+  </div>
+</div>
+
+<script>
+  const chatIcon = document.getElementById("chat-icon");
+  const chatBox = document.getElementById("chat-box");
+  const chatMessages = document.getElementById("chat-messages");
+  const chatText = document.getElementById("chatText");
+  const sendBtn = document.getElementById("sendBtn");
+
+  chatIcon.addEventListener("click", () => {
+    chatBox.style.display = "flex";
+    chatIcon.style.display = "none";
+  });
+
+  sendBtn.addEventListener("click", sendMessage);
+  chatText.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function sendMessage() {
+    let text = chatText.value.trim();
+    if (text === "") return;
+
+    // User message
+    chatMessages.innerHTML += `<div><b>Bạn:</b> ${text}</div>`;
+
+    // Bot Auto Reply
+    setTimeout(() => {
+      chatMessages.innerHTML += `<div><b>Bot:</b> Cảm ơn bạn! Tôi sẽ phản hồi sớm nhất. 🌸</div>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 500);
+
+    chatText.value = "";
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+</script>
 </body>
 </html>
