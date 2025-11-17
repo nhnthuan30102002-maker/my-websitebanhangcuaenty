@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entyshop - Hoa tươi Entyshop</title>
+<title>Entyshop - Hoa Sinh Nhật</title>
 
 <style>
 * { box-sizing: border-box; margin:0; padding:0; }
@@ -17,11 +17,10 @@ nav a { color:white; margin-left:20px; font-weight:bold; }
 nav a:hover { text-decoration:underline; }
 
 /* BANNER */
-.banner { height:420px; display:flex; justify-content:center; align-items:center; color:white; text-shadow:2px 2px 4px #000; font-size:38px; font-weight:bold; border-radius:12px; margin:20px; text-align:center; background-size:cover; background-position:center; }
+.banner { height:320px; display:flex; justify-content:center; align-items:center; color:white; text-shadow:2px 2px 4px #000; font-size:36px; font-weight:bold; border-radius:12px; margin:20px; text-align:center; background-size:cover; background-position:center; }
 
 /* SLOGAN & PROMO */
 .slogan { text-align:center; font-size:20px; margin:20px 0; color:#555; }
-.promo { background:#ffebf2; padding:20px; margin:20px auto; width:80%; border-left:6px solid #ff7ca8; border-radius:8px; font-size:18px; color:#e02963; text-align:center; }
 
 /* SECTION TITLE */
 .section-title { text-align:center; margin:40px 0 10px; font-size:28px; color:#555; }
@@ -70,25 +69,15 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   </nav>
 </header>
 
-<div class="banner">Shop Hoa Tươi EnTy 🌸</div>
-<div class="slogan">Hoa tươi mỗi ngày – Trao yêu thương tới người bạn trân quý 💖</div>
-<div class="promo">🎀 Giảm 20% cho đơn hàng đầu tiên – Nhập mã: <b>ENTY20</b> 🎀</div>
+<div class="banner">Hoa Sinh Nhật 🌸</div>
+<div class="slogan">Chọn hoa tươi để gửi yêu thương đến người thân yêu 💖</div>
 
-<div class="section-title">Sản phẩm nổi bật</div>
+<div class="section-title">Các sản phẩm hoa sinh nhật</div>
 
 <!-- PRODUCT LIST -->
 <div class="product-grid">
-  <div class="product-card" data-name="Hoa Khai Trương En01" data-price="500000" data-image="images/sp1.jpg">
-    <img src="images/sp1.jpg">
-    <h3>Hoa Khai Trương En01</h3>
-    <p class="price"></p>
-    <p>Hoa tươi Entyshop</p>
-    <button class="add-to-cart">Thêm vào giỏ hàng</button>
-    <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
-  </div>
-
   <div class="product-card" data-name="Hoa Sinh Nhật 01" data-price="450000" data-image="images/sp2.jpg">
-    <img src="images/sp2.jpg">
+    <img src="images/sp2.jpg" alt="Hoa Sinh Nhật 01">
     <h3>Hoa Sinh Nhật 01</h3>
     <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
@@ -96,27 +85,18 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
     <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
   </div>
 
-  <div class="product-card" data-name="Lan Hồ Điệp 01" data-price="700000" data-image="images/sp3.jpg">
-    <img src="images/sp3.jpg">
-    <h3>Lan Hồ Điệp 01</h3>
+  <div class="product-card" data-name="Hoa Sinh Nhật 02" data-price="500000" data-image="images/sp6.jpg">
+    <img src="images/sp6.jpg" alt="Hoa Sinh Nhật 02">
+    <h3>Hoa Sinh Nhật 02</h3>
     <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
     <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
   </div>
 
-  <div class="product-card" data-name="Hoa Theo Chủ Đề 01" data-price="350000" data-image="images/sp4.jpeg">
-    <img src="images/sp4.jpeg">
-    <h3>Hoa Theo Chủ Đề 01</h3>
-    <p class="price"></p>
-    <p>Hoa tươi Entyshop</p>
-    <button class="add-to-cart">Thêm vào giỏ hàng</button>
-    <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
-  </div>
-
-  <div class="product-card" data-name="Hoa Đám Tang 01" data-price="300000" data-image="images/sp5.jpeg">
-    <img src="images/sp5.jpeg">
-    <h3>Hoa Đám Tang 01</h3>
+  <div class="product-card" data-name="Hoa Sinh Nhật 03" data-price="600000" data-image="images/sp7.jpg">
+    <img src="images/sp7.jpg" alt="Hoa Sinh Nhật 03">
+    <h3>Hoa Sinh Nhật 03</h3>
     <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
@@ -149,16 +129,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
 </footer>
 
 <script>
-/* Random Banner */
-const banner = document.querySelector('.banner');
-const bgImages = [
-  'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80'
-];
-banner.style.background = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${bgImages[Math.floor(Math.random()*bgImages.length)]}') center/cover no-repeat`;
-
-/* Hiển thị giá tiền từ data-price */
+/* Hiển thị giá tiền tự động */
 document.querySelectorAll(".product-card").forEach(card => {
   const price = parseInt(card.dataset.price);
   const priceElem = card.querySelector(".price");
@@ -169,7 +140,6 @@ document.querySelectorAll(".product-card").forEach(card => {
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
-
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -195,17 +165,6 @@ document.querySelectorAll(".add-to-cart").forEach(btn=>{
   });
 });
 </script>
-
-<!-- ZALO CHAT WIDGET -->
-<div class="zalo-chat-widget"
-     data-oaid="579745863970340076"
-     data-welcome-message="Xin chào! Entyshop có thể hỗ trợ gì cho bạn?"
-     data-autopopup="0"
-     data-width="350"
-     data-height="420">
-</div>
-
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 </body>
 </html>
