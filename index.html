@@ -23,11 +23,7 @@
       z-index: 99;
     }
     header h1 { font-size: 24px; letter-spacing: 1px; }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      font-weight: bold;
-    }
+    nav a { color: white; margin-left: 20px; font-weight: bold; }
     nav a:hover { text-decoration: underline; }
 
     /* BANNER */
@@ -43,18 +39,9 @@
       border-radius: 12px;
       margin: 20px;
       text-align: center;
-      background: linear-gradient(
-          rgba(0,0,0,0.4),
-          rgba(0,0,0,0.4)
-        ),
-        url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80') 
-        center/cover no-repeat;
-      animation: fadeIn 2.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.05); }
-      to { opacity: 1; transform: scale(1); }
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80')
+                  center/cover no-repeat;
     }
 
     /* SLOGAN */
@@ -63,11 +50,6 @@
       font-size: 20px;
       margin: 20px 0;
       color: #555;
-      animation: slideIn 1.5s ease;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     /* PROMO */
@@ -81,11 +63,6 @@
       font-size: 18px;
       color: #e02963;
       text-align: center;
-      animation: popIn 1.2s ease-out;
-    }
-    @keyframes popIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     /* SECTION TITLE */
@@ -128,14 +105,54 @@
     }
     .product-card h3 { margin: 12px 0; color: #ff7ca8; }
     .product-card p { color: #777; margin-bottom: 5px; }
-     /* FOOTER */
-     footer {
+
+    /* FOOTER */
+    footer {
       background-color: #a8d5ba;
       color: #333;
-    }
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
       margin-top: 40px;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Căn giữa toàn bộ các cột */
+      gap: 40px;
+    }
+    .footer-column {
+      flex: 1 1 250px;
+      text-align: center; /* Nội dung các cột ra giữa */
+    }
+    .footer-column h4 { margin-bottom: 12px; font-size: 18px; }
+    .footer-column p, .footer-column a { font-size: 14px; line-height: 1.6; }
+    .footer-column a:hover { color: #e02963; }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      color: #555;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      background: #e02963;
+      color: white;
+    }
+    @media(max-width:768px){
+      .footer-container { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
@@ -154,63 +171,48 @@
     </nav>
   </header>
 
-  <!-- BANNER -->
   <div class="banner">Shop Hoa Tươi EnTy 🌸</div>
-
-  <!-- SLOGAN -->
   <div class="slogan">Hoa tươi mỗi ngày – Trao yêu thương tới người bạn trân quý 💖</div>
+  <div class="promo">🎀 Giảm 20% cho đơn hàng đầu tiên – Nhập mã: <b>ENTY20</b> 🎀</div>
 
-  <!-- PROMO -->
-  <div class="promo">
-    🎀 Giảm 20% cho đơn hàng đầu tiên – Nhập mã: <b>ENTY20</b> 🎀
-  </div>
-
-  <!-- SẢN PHẨM NỔI BẬT -->
   <div class="section-title">Sản phẩm nổi bật</div>
-
   <div class="product-grid">
-
     <div class="product-card">
       <img src="images/sp1.jpg" alt="Sản phẩm 1">
       <h3>Hoa Khai Trương En01</h3>
       <p>Hoa tươi Entyshop</p>
     </div>
-
     <div class="product-card">
       <img src="images/sp2.jpg" alt="Sản phẩm 2">
       <h3>Hoa Sinh Nhật 01</h3>
       <p>Hoa tươi Entyshop</p>
     </div>
-
     <div class="product-card">
       <img src="images/sp3.jpg" alt="Sản phẩm 3">
       <h3>Lan Hồ Điệp 01</h3>
       <p>Hoa tươi Entyshop</p>
     </div>
-
     <div class="product-card">
-      <img src="images/sp4.jpeg" alt="Sản phẩm 4">
-      <h3>Hoa Theo Chủ Để 01</h3>
+      <img src="images/sp4.jpg" alt="Sản phẩm 4">
+      <h3>Hoa Theo Chủ Đề 01</h3>
       <p>Hoa tươi Entyshop</p>
     </div>
-
     <div class="product-card">
-      <img src="images/sp5.jpeg" alt="Sản phẩm 5">
+      <img src="images/sp5.jpg" alt="Sản phẩm 5">
       <h3>Hoa Đám Tang 01</h3>
       <p>Hoa tươi Entyshop</p>
     </div>
-
   </div>
 
-   <footer>
+  <footer>
     <div class="footer-container">
       <div class="footer-column">
         <h4>Về Entyshop</h4>
-        <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Chúng tôi cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
+        <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
       </div>
       <div class="footer-column">
         <h4>Liên hệ</h4>
-        <p>📍 Địa chỉ: 381 nguyễn chí thanh T.T Tràm Chim Huyện Tam nông Đồng Tháp</p>
+        <p>📍 Địa chỉ: 381 Nguyễn Chí Thanh, T.T Tràm Chim, Huyện Tam Nông, Đồng Tháp</p>
         <p>📞 Hotline: 0372 750 669</p>
         <p>✉ Email: nhnthuan30102002@gmail.com</p>
       </div>
@@ -221,7 +223,8 @@
         </div>
       </div>
     </div>
-    <p style="text-align:center; margin-top:20px; font-size:14px;">© 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc</p>
+    <p style="margin-top:20px; font-size:14px;">© 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc</p>
   </footer>
+
 </body>
 </html>
