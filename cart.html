@@ -178,7 +178,9 @@ function loadCart() {
 function changeQuantity(index, delta) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart[index].quantity += delta;
-  if(cart[index].quantity < 1) cart[index].quantity = 1;
+  if(cart[index].quantity < 1){
+    cart.splice(index,1); // xóa sản phẩm nếu quantity = 0
+  }
   localStorage.setItem('cart', JSON.stringify(cart));
   loadCart();
 }
@@ -198,9 +200,8 @@ function clearCart() {
     loadCart();
   }
 }
-
+// Khi load trang
 window.onload = loadCart;
 </script>
-
 </body>
 </html>
