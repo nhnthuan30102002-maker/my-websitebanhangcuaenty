@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Entyshop - Cửa hàng hoa tươi</title>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background-color: #ffffff; color: #333; }
@@ -26,15 +27,15 @@
     nav a:hover { text-decoration: underline; }
 
     .banner {
-      height: 400px;
+      height: 350px;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       text-shadow: 2px 2px 4px #000;
-      font-size: 40px;
+      font-size: 38px;
       font-weight: bold;
-      background-color: #87CEFA; /* màu xanh nhẹ cho banner */
+      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
       margin: 20px;
       border-radius: 10px;
       text-align: center;
@@ -68,7 +69,7 @@
       height: 220px;
       object-fit: cover;
     }
-    .product h3 { margin: 10px 0; color: #FFB6C1; } /* chữ hồng nhạt */
+    .product h3 { margin: 10px 0; color: #FF7F9F; }
     .product p { color: #777; margin-bottom: 10px; }
     .product button {
       background-color: #555;
@@ -88,12 +89,6 @@
       padding: 15px;
       margin-top: 40px;
     }
-
-    @media screen and (max-width: 768px) {
-      .banner { height: 200px; font-size: 24px; }
-      .products { padding: 0 20px 20px 20px; gap: 15px; }
-      .product img { height: 150px; }
-    }
   </style>
 </head>
 <body>
@@ -101,35 +96,35 @@
   <header>
     <h1>Entyshop</h1>
     <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="hoasinhnhat.html">Hoa sinh nhật</a>
-    <a href="bohoa.html">Bó hoa</a>
-    <a href="giohoa.html">Giỏ hoa</a>
-    <a href="contact.html">Liên hệ</a>
-    <a href="cart.html">Giỏ hàng</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="hoasinhnhat.html">Hoa sinh nhật</a>
+      <a href="bohoa.html">Bó hoa</a>
+      <a href="giohoa.html">Giỏ hoa</a>
+      <a href="contact.html">Liên hệ</a>
+      <a href="cart.html">Giỏ hàng</a>
     </nav>
   </header>
 
-  <div class="banner">
-    Vườn hoa Entyshop 🌸
-  </div>
+  <div class="banner">Vườn hoa Entyshop 🌸</div>
 
-  <div class="section-title">Hoa sinh nhật</div>
+  <div class="section-title">Sản phẩm nổi bật</div>
   <section class="products">
     <div class="product">
-      <img src="https://via.placeholder.com/300x220?text=Hoa+Đỏ" alt="Bó hoa sinh nhật đỏ">
+      <img src="https://via.placeholder.com/300x220?text=Hoa+Đỏ">
       <h3>Bó hoa sinh nhật đỏ</h3>
       <p>200.000đ</p>
       <button onclick="addToCart('Bó hoa sinh nhật đỏ', 200000)">Thêm vào giỏ</button>
     </div>
+
     <div class="product">
-      <img src="https://via.placeholder.com/300x220?text=Hoa+Hồng" alt="Bó hoa sinh nhật hồng">
+      <img src="https://via.placeholder.com/300x220?text=Hoa+Hồng">
       <h3>Bó hoa sinh nhật hồng</h3>
       <p>250.000đ</p>
       <button onclick="addToCart('Bó hoa sinh nhật hồng', 250000)">Thêm vào giỏ</button>
     </div>
+
     <div class="product">
-      <img src="https://via.placeholder.com/300x220?text=Hoa+Vàng" alt="Bó hoa sinh nhật vàng">
+      <img src="https://via.placeholder.com/300x220?text=Hoa+Vàng">
       <h3>Bó hoa sinh nhật vàng</h3>
       <p>300.000đ</p>
       <button onclick="addToCart('Bó hoa sinh nhật vàng', 300000)">Thêm vào giỏ</button>
@@ -144,11 +139,13 @@
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       let existing = cart.find(item => item.name === name);
+
       if(existing){
-        existing.quantity += 1;
+        existing.quantity++;
       } else {
         cart.push({ name, price, quantity: 1 });
       }
+
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(name + " đã được thêm vào giỏ hàng!");
     }
