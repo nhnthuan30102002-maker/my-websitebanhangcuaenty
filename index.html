@@ -105,6 +105,47 @@
     }
     .product-card h3 { margin: 12px 0; color: #ff7ca8; }
     .product-card p { color: #777; margin-bottom: 5px; }
+    .product-card button {
+      background: #ff7ca8;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+    .product-card button:hover { background: #e02963; }
+
+    /* GIỎ HÀNG */
+    #cart {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    #cart h4 { margin-bottom: 10px; }
+    #cart ul { list-style: none; margin-bottom: 10px; }
+    #cart li { margin-bottom: 8px; font-size: 14px; }
+    #cart button {
+      background: #ff7ca8;
+      border: none;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    #cart button:hover { background: #e02963; }
 
     /* FOOTER */
     footer {
@@ -147,12 +188,11 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    .social-icons a:hover {
-      background: #e02963;
-      color: white;
-    }
+    .social-icons a:hover { background: #e02963; color: white; }
+
     @media(max-width:768px){
       .footer-container { flex-direction: column; gap: 20px; }
+      #cart { position: static; width: auto; max-height: none; margin: 20px; }
     }
   </style>
 </head>
@@ -178,31 +218,43 @@
 
   <div class="section-title">Sản phẩm nổi bật</div>
   <div class="product-grid">
-    <div class="product-card">
+    <div class="product-card" data-name="Hoa Khai Trương En01" data-price="500000">
       <img src="images/sp1.jpg" alt="Sản phẩm 1">
       <h3>Hoa Khai Trương En01</h3>
       <p>Hoa tươi Entyshop</p>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-name="Hoa Sinh Nhật 01" data-price="450000">
       <img src="images/sp2.jpg" alt="Sản phẩm 2">
       <h3>Hoa Sinh Nhật 01</h3>
       <p>Hoa tươi Entyshop</p>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-name="Lan Hồ Điệp 01" data-price="700000">
       <img src="images/sp3.jpg" alt="Sản phẩm 3">
       <h3>Lan Hồ Điệp 01</h3>
       <p>Hoa tươi Entyshop</p>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-name="Hoa Theo Chủ Đề 01" data-price="350000">
       <img src="images/sp4.jpeg" alt="Sản phẩm 4">
       <h3>Hoa Theo Chủ Đề 01</h3>
       <p>Hoa tươi Entyshop</p>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-name="Hoa Đám Tang 01" data-price="300000">
       <img src="images/sp5.jpeg" alt="Sản phẩm 5">
       <h3>Hoa Đám Tang 01</h3>
       <p>Hoa tươi Entyshop</p>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
     </div>
+  </div>
+
+  <!-- GIỎ HÀNG -->
+  <div id="cart">
+    <h4>Giỏ hàng</h4>
+    <ul id="cart-items"></ul>
+    <p>Tổng: <span id="cart-total">0</span> VNĐ</p>
   </div>
 
   <footer>
@@ -243,6 +295,55 @@
       const rand = Math.floor(Math.random() * bgImages.length);
       banner.style.background = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${bgImages[rand]}') center/cover no-repeat`;
     });
+
+    // GIỎ HÀNG
+    const cart = [];
+    const cartItemsEl = document.getElementById('cart-items');
+    const cartTotalEl = document.getElementById('cart-total');
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price);
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        renderCart();
+      });
+    });
+
+    function renderCart() {
+      cartItemsEl.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${item.name} - ${item.qty} x ${item.price.toLocaleString()} VNĐ
+          <button onclick="changeQty('${item.name}',1)">+</button>
+          <button onclick="changeQty('${item.name}',-1)">-</button>
+        `;
+        cartItemsEl.appendChild(li);
+      });
+      cartTotalEl.textContent = total.toLocaleString();
+    }
+
+    function changeQty(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        const index = cart.indexOf(item);
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
   </script>
 
 </body>
