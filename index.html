@@ -34,6 +34,7 @@ nav a:hover { text-decoration:underline; }
 .product-card:hover img { filter:brightness(1.2); }
 .product-card h3 { margin:12px 0; color:#ff7ca8; }
 .product-card p { color:#777; margin-bottom:5px; }
+.product-card .price { color:#e02963; font-weight:bold; font-size:16px; margin-bottom:5px; }
 .product-card button { background:#ff7ca8; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; transition:0.3s; margin-top:5px; }
 .product-card button:hover { background:#e02963; }
 
@@ -78,6 +79,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   <div class="product-card" data-name="Hoa Khai Trương En01" data-price="500000" data-image="images/sp1.jpg">
     <img src="images/sp1.jpg">
     <h3>Hoa Khai Trương En01</h3>
+    <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
   </div>
@@ -85,7 +87,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   <div class="product-card" data-name="Hoa Sinh Nhật 01" data-price="450000" data-image="images/sp2.jpg">
     <img src="images/sp2.jpg">
     <h3>Hoa Sinh Nhật 01</h3>
-     <p class="price">500.000₫</p>
+    <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
   </div>
@@ -93,7 +95,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   <div class="product-card" data-name="Lan Hồ Điệp 01" data-price="700000" data-image="images/sp3.jpg">
     <img src="images/sp3.jpg">
     <h3>Lan Hồ Điệp 01</h3>
-     <p class="price">700.000₫</p>
+    <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
   </div>
@@ -101,7 +103,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   <div class="product-card" data-name="Hoa Theo Chủ Đề 01" data-price="350000" data-image="images/sp4.jpeg">
     <img src="images/sp4.jpeg">
     <h3>Hoa Theo Chủ Đề 01</h3>
-     <p class="price">300.000₫</p>
+    <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
   </div>
@@ -109,7 +111,7 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
   <div class="product-card" data-name="Hoa Đám Tang 01" data-price="300000" data-image="images/sp5.jpeg">
     <img src="images/sp5.jpeg">
     <h3>Hoa Đám Tang 01</h3>
-     <p class="price">450.000₫</p>
+    <p class="price"></p>
     <p>Hoa tươi Entyshop</p>
     <button class="add-to-cart">Thêm vào giỏ hàng</button>
   </div>
@@ -149,6 +151,13 @@ const bgImages = [
 ];
 banner.style.background = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${bgImages[Math.floor(Math.random()*bgImages.length)]}') center/cover no-repeat`;
 
+/* Hiển thị giá tiền từ data-price */
+document.querySelectorAll(".product-card").forEach(card => {
+  const price = parseInt(card.dataset.price);
+  const priceElem = card.querySelector(".price");
+  priceElem.textContent = price.toLocaleString('vi-VN') + "₫";
+});
+
 /* Cart Functions */
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
@@ -180,7 +189,7 @@ document.querySelectorAll(".add-to-cart").forEach(btn=>{
 });
 </script>
 
-<!-- ⭐⭐⭐ ZALO CHAT WIDGET — CHÍNH CHỦ ⭐⭐⭐ -->
+<!-- ZALO CHAT WIDGET -->
 <div class="zalo-chat-widget"
      data-oaid="579745863970340076"
      data-welcome-message="Xin chào! Entyshop có thể hỗ trợ gì cho bạn?"
