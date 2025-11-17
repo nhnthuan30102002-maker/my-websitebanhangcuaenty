@@ -6,22 +6,88 @@
   <title>Bó hoa - Entyshop</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background: #f7f7f7; color: #333; }
-    header { background: #555; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    body { font-family: Arial, sans-serif; background-color: #fffdfd; color: #333; }
+    a { text-decoration: none; }
+
+    header {
+      background-color: #555;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
     header h1 { font-size: 24px; }
-    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: bold; }
+    nav a { color: white; margin-left: 20px; font-weight: bold; }
     nav a:hover { text-decoration: underline; }
 
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px; }
-    .product { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden; text-align: center; transition: transform 0.2s; }
-    .product:hover { transform: scale(1.03); }
-    .product img { width: 100%; height: 220px; object-fit: cover; }
-    .product h3 { margin: 10px 0; }
-    .product p { color: #777; margin-bottom: 10px; }
-    .product button { background: #555; color: white; border: none; padding: 10px 20px; cursor: pointer; margin-bottom: 15px; border-radius: 5px; }
-    .product button:hover { background: #333; }
+    .banner {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      font-size: 36px;
+      font-weight: bold;
+      border-radius: 12px;
+      margin: 20px;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    }
 
-    footer { background: #555; color: white; text-align: center; padding: 15px; margin-top: 40px; }
+    .slogan { text-align:center; font-size:20px; margin:20px 0; color:#555; }
+
+    .product-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap:24px;
+      padding:0 40px 40px;
+    }
+    .product-card {
+      background:white;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      overflow:hidden;
+      text-align:center;
+      transition:0.3s;
+      padding-bottom:15px;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    .product-card img { width:100%; height:240px; object-fit:cover; transition:0.3s; }
+    .product-card:hover img { filter: brightness(1.2); }
+    .product-card h3 { margin:12px 0; color:#ff7ca8; }
+    .product-card p { color:#777; margin-bottom:5px; }
+
+    .intro-footer {
+      background-color: #a8d5ba;
+      padding:30px 40px;
+      margin:40px auto;
+      border-radius:12px;
+      max-width:1200px;
+    }
+    .intro-header { font-size:22px; font-weight:bold; color:#333; margin-bottom:15px; cursor:pointer; }
+    .intro-content { display:none; color:#333; line-height:1.6; }
+    .intro-content ul, .intro-content ol { margin-left:20px; margin-bottom:15px; }
+
+    footer { background:#a8d5ba; color:#333; text-align:center; padding:40px 20px; margin-top:20px; }
+    .footer-container { max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:40px; }
+    .footer-column { flex:1 1 250px; text-align:center; }
+    .footer-column h4 { margin-bottom:12px; font-size:18px; }
+    .footer-column p, .footer-column a { font-size:14px; line-height:1.6; }
+    .footer-column a:hover { color:#e02963; }
+    .social-icons { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+    .social-icons a { display:inline-block; width:30px; height:30px; background:#fff; color:#555; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; transition:0.3s; }
+    .social-icons a:hover { background:#e02963; color:white; }
+
+    @media(max-width:768px){
+      .footer-container { flex-direction: column; gap: 20px; }
+      .product-grid { padding:0 20px 40px; }
+      .intro-footer { padding:20px; margin:20px; }
+    }
   </style>
 </head>
 <body>
@@ -35,43 +101,81 @@
     <a href="giohoa.html">Giỏ hoa</a>
     <a href="contact.html">Liên hệ</a>
     <a href="cart.html">Giỏ hàng</a>
-    </nav>
   </nav>
 </header>
 
-<section class="products">
-  <div class="product">
-    <img src="https://picsum.photos/400/300?random=8" alt="Bó hoa 1">
-    <h3>Bó hoa hồng đỏ</h3>
-    <p>250.000đ</p>
-    <button onclick="addToCart('Bó hoa hồng đỏ', 250000)">Thêm vào giỏ</button>
+<div class="banner">Bó Hoa 🌸</div>
+<div class="slogan">Bó hoa tinh tế, gửi yêu thương 💖</div>
+
+<div class="product-grid">
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=11" alt="Bó hoa 1">
+    <h3>Bó hoa A</h3><p>250.000đ</p>
   </div>
-  <div class="product">
-    <img src="https://picsum.photos/400/300?random=9" alt="Bó hoa 2">
-    <h3>Bó hoa lan tím</h3>
-    <p>400.000đ</p>
-    <button onclick="addToCart('Bó hoa lan tím', 400000)">Thêm vào giỏ</button>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=12" alt="Bó hoa 2">
+    <h3>Bó hoa B</h3><p>260.000đ</p>
   </div>
-  <div class="product">
-    <img src="https://picsum.photos/400/300?random=10" alt="Bó hoa 3">
-    <h3>Bó hoa tulip vàng</h3>
-    <p>300.000đ</p>
-    <button onclick="addToCart('Bó hoa tulip vàng', 300000)">Thêm vào giỏ</button>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=13" alt="Bó hoa 3">
+    <h3>Bó hoa C</h3><p>270.000đ</p>
   </div>
-</section>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=14" alt="Bó hoa 4">
+    <h3>Bó hoa D</h3><p>280.000đ</p>
+  </div>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=15" alt="Bó hoa 5">
+    <h3>Bó hoa E</h3><p>290.000đ</p>
+  </div>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=16" alt="Bó hoa 6">
+    <h3>Bó hoa F</h3><p>300.000đ</p>
+  </div>
+</div>
+
+<div class="intro-footer">
+  <div class="intro-header">Giới thiệu</div>
+  <div class="intro-content">
+    <p>Shop Hoa Tươi Enty – Bó hoa tinh tế, phục vụ các dịp đặc biệt. Cam kết chất lượng và tươi mới.</p>
+    <ul>
+      <li>Thiết kế độc đáo, đa dạng màu sắc</li>
+      <li>Bó hoa cho sinh nhật, kỷ niệm, quà tặng</li>
+      <li>Dịch vụ giao hoa tận nơi nhanh chóng</li>
+    </ul>
+  </div>
+</div>
 
 <footer>
-  © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Về Entyshop</h4>
+      <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
+    </div>
+    <div class="footer-column">
+      <h4>Liên hệ</h4>
+      <p>📍 381 Nguyễn Chí Thanh, T.T Tràm Chim, Huyện Tam Nông, Đồng Tháp</p>
+      <p>📞 0372 750 669</p>
+      <p>✉ nhnthuan30102002@gmail.com</p>
+    </div>
+    <div class="footer-column">
+      <h4>Kết nối với chúng tôi</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/fakedev3010" title="Facebook">F</a>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:20px; font-size:14px;">
+      © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+    </div>
+  </div>
 </footer>
 
 <script>
-function addToCart(name, price){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let existing = cart.find(item => item.name === name);
-  if(existing){ existing.quantity +=1; } else { cart.push({name, price, quantity:1}); }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(name + " đã được thêm vào giỏ hàng!");
-}
+  const headerB = document.querySelector('.intro-header');
+  const contentB = document.querySelector('.intro-content');
+  headerB.addEventListener('click', () => {
+    contentB.style.display = (contentB.style.display === 'block') ? 'none' : 'block';
+  });
 </script>
 
 </body>
