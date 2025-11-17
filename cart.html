@@ -136,6 +136,7 @@ footer {
 </footer>
 
 <script>
+// Hàm load giỏ hàng từ localStorage
 function loadCart() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const tbody = document.querySelector('#cart-table tbody');
@@ -173,6 +174,7 @@ function loadCart() {
   document.getElementById('total-price').textContent = 'Tổng: ' + total.toLocaleString() + 'đ';
 }
 
+// Tăng / giảm số lượng
 function changeQuantity(index, delta) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart[index].quantity += delta;
@@ -181,6 +183,7 @@ function changeQuantity(index, delta) {
   loadCart();
 }
 
+// Xóa sản phẩm
 function removeItem(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index,1);
@@ -188,6 +191,7 @@ function removeItem(index) {
   loadCart();
 }
 
+// Xóa toàn bộ giỏ hàng
 function clearCart() {
   if(confirm('Bạn có chắc muốn xoá tất cả?')){
     localStorage.removeItem('cart');
