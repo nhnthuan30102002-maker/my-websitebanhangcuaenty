@@ -136,18 +136,6 @@
   </div>
 </div>
 
-<div class="intro-footer">
-  <div class="intro-header">Giới thiệu</div>
-  <div class="intro-content">
-    <p>Shop Hoa Tươi Enty là cửa hàng uy tín với các bó hoa tươi đẹp, phục vụ mọi dịp đặc biệt.</p>
-    <ul>
-      <li>Bó hoa thiết kế sáng tạo, phù hợp sinh nhật, kỷ niệm, quà tặng</li>
-      <li>Dịch vụ giao hoa tận nơi nhanh chóng và đúng giờ</li>
-      <li>Cam kết hoa tươi 100% và chất lượng tốt nhất</li>
-    </ul>
-  </div>
-</div>
-
 <footer>
   <div class="footer-container">
     <div class="footer-column">
@@ -161,20 +149,34 @@
       <p>✉ nhnthuan30102002@gmail.com</p>
     </div>
     <div class="footer-column">
+      <h4>Giới thiệu</h4>
+      <div class="intro-content">
+        <p>Shop Hoa Tươi Enty là cửa hàng uy tín với các bó hoa tươi đẹp, phục vụ mọi dịp đặc biệt.</p>
+        <ul>
+          <li>Bó hoa thiết kế sáng tạo, phù hợp sinh nhật, kỷ niệm, quà tặng</li>
+          <li>Dịch vụ giao hoa tận nơi nhanh chóng và đúng giờ</li>
+          <li>Cam kết hoa tươi 100% và chất lượng tốt nhất</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-column">
       <h4>Kết nối với chúng tôi</h4>
       <div class="social-icons">
         <a href="https://www.facebook.com/fakedev3010" title="Facebook">F</a>
       </div>
     </div>
-    <div style="text-align:center; margin-top:20px; font-size:14px;">
-      © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-    </div>
+  </div>
+  <div style="text-align:center; margin-top:20px; font-size:14px;">
+    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </div>
 </footer>
 
 <script>
-  const introHeader = document.querySelector('.intro-header');
-  const introContent = document.querySelector('.intro-content');
+  // Toggle giới thiệu khi bấm vào tiêu đề
+  const introFooterHeader = document.querySelector('.footer-column h4:nth-child(1) + .intro-content, .footer-column h4:nth-child(3) + .intro-content');
+  const introContent = document.querySelector('.footer-column:nth-child(3) .intro-content');
+  const introHeader = document.querySelector('.footer-column:nth-child(3) h4');
+
   introHeader.addEventListener('click', () => {
     introContent.style.display = (introContent.style.display === 'block') ? 'none' : 'block';
   });
