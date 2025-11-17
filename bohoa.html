@@ -36,7 +36,9 @@
       border-radius: 12px;
       margin: 20px;
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80')
+                  center/cover no-repeat;
     }
 
     .slogan { text-align:center; font-size:20px; margin:20px 0; color:#555; }
@@ -105,7 +107,7 @@
 </header>
 
 <div class="banner">Bó Hoa 🌸</div>
-<div class="slogan">Bó hoa tinh tế, gửi yêu thương 💖</div>
+<div class="slogan">Bó hoa tinh tế – Trao yêu thương 💖</div>
 
 <div class="product-grid">
   <div class="product-card">
@@ -137,11 +139,11 @@
 <div class="intro-footer">
   <div class="intro-header">Giới thiệu</div>
   <div class="intro-content">
-    <p>Shop Hoa Tươi Enty – Bó hoa tinh tế, phục vụ các dịp đặc biệt. Cam kết chất lượng và tươi mới.</p>
+    <p>Shop Hoa Tươi Enty là cửa hàng uy tín với các bó hoa tươi đẹp, phục vụ mọi dịp đặc biệt.</p>
     <ul>
-      <li>Thiết kế độc đáo, đa dạng màu sắc</li>
-      <li>Bó hoa cho sinh nhật, kỷ niệm, quà tặng</li>
-      <li>Dịch vụ giao hoa tận nơi nhanh chóng</li>
+      <li>Bó hoa thiết kế sáng tạo, phù hợp sinh nhật, kỷ niệm, quà tặng</li>
+      <li>Dịch vụ giao hoa tận nơi nhanh chóng và đúng giờ</li>
+      <li>Cam kết hoa tươi 100% và chất lượng tốt nhất</li>
     </ul>
   </div>
 </div>
@@ -171,10 +173,10 @@
 </footer>
 
 <script>
-  const headerB = document.querySelector('.intro-header');
-  const contentB = document.querySelector('.intro-content');
-  headerB.addEventListener('click', () => {
-    contentB.style.display = (contentB.style.display === 'block') ? 'none' : 'block';
+  const introHeader = document.querySelector('.intro-header');
+  const introContent = document.querySelector('.intro-content');
+  introHeader.addEventListener('click', () => {
+    introContent.style.display = (introContent.style.display === 'block') ? 'none' : 'block';
   });
 </script>
 
