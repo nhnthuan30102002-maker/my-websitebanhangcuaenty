@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hoa sinh nhật - Entyshop</title>
-
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background-color: #fffdfd; color: #333; }
@@ -51,6 +50,31 @@
       font-size: 20px;
       margin: 20px 0;
       color: #555;
+    }
+
+    /* GIỚI THIỆU (ACCORDION) */
+    .accordion {
+      width: 80%;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .accordion-header {
+      background-color: #ffebf2;
+      color: #e02963;
+      cursor: pointer;
+      padding: 15px 20px;
+      font-weight: bold;
+      font-size: 18px;
+      user-select: none;
+    }
+    .accordion-content {
+      padding: 15px 20px;
+      display: none;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
     }
 
     /* PRODUCT GRID */
@@ -155,6 +179,37 @@
 
   <div class="slogan">Gửi yêu thương qua từng bó hoa sinh nhật 💖</div>
 
+  <!-- Accordion giới thiệu -->
+  <div class="accordion">
+    <div class="accordion-header">Giới thiệu</div>
+    <div class="accordion-content">
+      <p>Shop Hoa Tươi Enty là một trong những cửa hàng hoa tươi nổi bật trong ngành, được khách hàng yêu thích nhờ sự uy tín và chất lượng dịch vụ hoàn hảo. Với sứ mệnh mang đến niềm vui và cảm xúc thông qua từng bó hoa, Enty luôn nỗ lực để tạo ra những sản phẩm hoa tươi tinh tế, độc đáo và phù hợp với nhu cầu của từng khách hàng.</p>
+
+      <p><strong>Đa Dạng Loại Hoa và Thiết Kế Sáng Tạo:</strong> Tại Enty, khách hàng sẽ được chiêm ngưỡng một không gian hoa tươi đa dạng với nhiều loại hoa như hồng, lan, cúc, tulip, mẫu đơn, và nhiều loài hoa nhập khẩu khác. Mỗi bó hoa đều được chăm chút tỉ mỉ, từ khâu lựa chọn hoa đến thiết kế, đảm bảo hoa luôn tươi mới và mang phong cách riêng.</p>
+
+      <p>Enty cung cấp đa dạng các sản phẩm như:</p>
+      <ul>
+        <li>Bó hoa tươi: Thiết kế sáng tạo, phù hợp cho các dịp sinh nhật, kỷ niệm, ngày lễ.</li>
+        <li>Giỏ hoa, lẵng hoa: Trang trí trang nhã, dùng cho các sự kiện, chúc mừng hoặc thể hiện lòng biết ơn.</li>
+        <li>Hoa cưới: Từ hoa cầm tay cô dâu đến hoa trang trí tiệc cưới, Enty mang đến sự tinh tế và lãng mạn.</li>
+        <li>Hoa chia buồn: Vòng hoa chia buồn thiết kế trang trọng, lịch sự, mang thông điệp cảm thông sâu sắc.</li>
+      </ul>
+
+      <p><strong>Dịch Vụ Chuyên Nghiệp và Tận Tình:</strong> Enty nổi bật bởi chất lượng hoa và dịch vụ chăm sóc khách hàng chuyên nghiệp. Đội ngũ nhân viên luôn tư vấn, hỗ trợ khách hàng lựa chọn những bó hoa phù hợp cho từng dịp đặc biệt. Dịch vụ giao hoa tận nơi nhanh chóng tại 63 tỉnh thành, đảm bảo hoa tươi và đúng hẹn.</p>
+
+      <p><strong>Cam Kết Chất Lượng và Giá Cả Hợp Lý:</strong> Enty cam kết mang đến sản phẩm hoa tươi chất lượng với giá cả cạnh tranh. Mỗi sản phẩm được bảo quản tốt, giúp hoa giữ độ bền lâu, đặt lợi ích và sự hài lòng của khách hàng lên hàng đầu.</p>
+
+      <p><strong>Lý do chọn hoa tươi làm quà:</strong></p>
+      <ol>
+        <li>Thể hiện cảm xúc chân thành</li>
+        <li>Tạo niềm vui và hạnh phúc</li>
+        <li>Món quà phù hợp với mọi dịp</li>
+        <li>Giá trị thẩm mỹ cao</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Product grid 6 sản phẩm -->
   <div class="product-grid">
     <div class="product-card">
       <img src="https://picsum.photos/400/300?random=1" alt="Bó hoa đỏ">
@@ -211,6 +266,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Accordion toggle
+  const header = document.querySelector('.accordion-header');
+  const content = document.querySelector('.accordion-content');
+  header.addEventListener('click', () => {
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+  });
+</script>
 
 </body>
 </html>
