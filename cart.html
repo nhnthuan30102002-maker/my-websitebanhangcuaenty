@@ -158,23 +158,6 @@
 
     document.getElementById("total-price").textContent = "Tổng: " + total.toLocaleString() + "đ";
   }
-
-  function addToCart(name, price, imageSrc) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const existing = cart.find(item => item.name === name);
-
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            qty: 1,
-            image: imageSrc
-        });
-    }
-
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Đã thêm vào giỏ hàng!");
 }
