@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entyshop - Cửa hàng hoa tươi</title>
+  <title>Entyshop - Hoa tươi Entyshop</title>
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background-color: #ffffff; color: #333; }
+    body { font-family: Arial, sans-serif; background-color: #fffdfd; color: #333; }
+    a { text-decoration: none; }
 
+    /* HEADER */
     header {
       background-color: #555;
       color: white;
@@ -16,18 +18,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 99;
     }
     header h1 { font-size: 24px; letter-spacing: 1px; }
     nav a {
       color: white;
       margin-left: 20px;
-      text-decoration: none;
       font-weight: bold;
     }
     nav a:hover { text-decoration: underline; }
 
+    /* BANNER */
     .banner {
-      height: 350px;
+      height: 420px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -35,62 +40,148 @@
       text-shadow: 2px 2px 4px #000;
       font-size: 38px;
       font-weight: bold;
-      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+      border-radius: 12px;
       margin: 20px;
-      border-radius: 10px;
       text-align: center;
+      background: linear-gradient(
+          rgba(0,0,0,0.4),
+          rgba(0,0,0,0.4)
+        ),
+        url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80') 
+        center/cover no-repeat;
+      animation: fadeIn 2.5s ease;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* SLOGAN */
+    .slogan {
+      text-align: center;
+      font-size: 20px;
+      margin: 20px 0;
+      color: #555;
+      animation: slideIn 1.5s ease;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PROMO BOX */
+    .promo {
+      background: #ffebf2;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      border-left: 6px solid #ff7ca8;
+      border-radius: 8px;
+      font-size: 18px;
+      color: #e02963;
+      text-align: center;
+      animation: popIn 1.2s ease-out;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* SECTION TITLE */
     .section-title {
       text-align: center;
-      margin: 40px 0 20px 0;
+      margin: 40px 0 20px;
       font-size: 28px;
       color: #555;
     }
 
+    /* PRODUCT GRID */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 0 40px 40px 40px;
+      gap: 24px;
+      padding: 0 40px 40px;
     }
 
     .product {
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
       text-align: center;
-      transition: transform 0.2s;
+      transition: 0.3s;
     }
-    .product:hover { transform: scale(1.03); }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
     .product img {
       width: 100%;
-      height: 220px;
+      height: 240px;
       object-fit: cover;
+      transition: 0.3s;
     }
-    .product h3 { margin: 10px 0; color: #FF7F9F; }
+    .product:hover img {
+      filter: brightness(1.2);
+    }
+    .product h3 { margin: 12px 0; color: #ff7ca8; }
     .product p { color: #777; margin-bottom: 10px; }
     .product button {
-      background-color: #555;
+      background-color: #ff7ca8;
       color: white;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
       margin-bottom: 15px;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: 0.2s;
     }
-    .product button:hover { background-color: #333; }
+    .product button:hover { background-color: #e02963; }
 
+    /* WHY CHOOSE */
+    .why-box {
+      padding: 40px;
+      background: #fafafa;
+      margin: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .why-title {
+      font-size: 26px;
+      text-align: center;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .why-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .why-item {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: .3s;
+    }
+    .why-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* FOOTER */
     footer {
       background-color: #555;
       color: white;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       margin-top: 40px;
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -105,9 +196,22 @@
     </nav>
   </header>
 
-  <div class="banner">Vườn hoa Entyshop 🌸</div>
+  <!-- BANNER -->
+  <div class="banner">
+    Vườn hoa Entyshop 🌸
+  </div>
 
+  <!-- SLOGAN -->
+  <div class="slogan">Hoa tươi mỗi ngày – Trao yêu thương tới người bạn trân quý 💖</div>
+
+  <!-- PROMO -->
+  <div class="promo">
+    🎀 Giảm 20% cho đơn hàng đầu tiên – Nhập mã: <b>ENTY20</b> 🎀
+  </div>
+
+  <!-- SẢN PHẨM NỔI BẬT -->
   <div class="section-title">Sản phẩm nổi bật</div>
+
   <section class="products">
     <div class="product">
       <img src="https://via.placeholder.com/300x220?text=Hoa+Đỏ">
@@ -131,6 +235,17 @@
     </div>
   </section>
 
+  <!-- WHY CHOOSE US -->
+  <div class="why-box">
+    <div class="why-title">Vì sao khách chọn Entyshop?</div>
+    <div class="why-list">
+      <div class="why-item">🌸 Hoa tươi 100% – Không dùng hoa tồn</div>
+      <div class="why-item">🚚 Giao nhanh 2H trong nội thành</div>
+      <div class="why-item">🎁 Thiệp & lời chúc miễn phí</div>
+      <div class="why-item">💳 Thanh toán đơn giản, hỗ trợ mọi hình thức</div>
+    </div>
+  </div>
+
   <footer>
     © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </footer>
@@ -139,13 +254,11 @@
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       let existing = cart.find(item => item.name === name);
-
       if(existing){
         existing.quantity++;
       } else {
         cart.push({ name, price, quantity: 1 });
       }
-
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(name + " đã được thêm vào giỏ hàng!");
     }
