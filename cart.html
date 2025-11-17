@@ -1,118 +1,162 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Giỏ hàng - Entyshop</title>
-
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }
-
-    header { background: #333; padding: 15px; text-align: center; }
-    header a { color: white; font-size: 20px; text-decoration: none; }
-
-    h2 { text-align: center; margin: 20px 0; }
-
-    table {
-      width: 90%;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .cart-wrapper {
+      max-width: 900px;
       margin: 0 auto;
-      background: white;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
       border-collapse: collapse;
     }
-
-    th, td {
-      border-bottom: 1px solid #ddd;
+    table thead th {
       padding: 12px;
+      border-bottom: 2px solid #ddd;
+      text-align: left;
+      font-weight: bold;
+    }
+    table tbody td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .product-info {
+      display: flex;
+      align-items: center;
+    }
+    .product-info img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 15px;
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+    }
+    .quantity button {
+      padding: 4px 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .quantity span {
+      margin: 0 8px;
+      min-width: 24px;
       text-align: center;
     }
-
-    img {
-      width: 70px;
-      height: 70px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .quantity button { padding: 5px 10px; font-size: 16px; }
-
     .remove-btn {
-      background: red; color: white; border: none; padding: 6px 12px;
-      cursor: pointer; border-radius: 4px;
+      background-color: #e74c3c;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
     }
-
+    .remove-btn:hover {
+      background-color: #c0392b;
+    }
     .total-box {
-      width: 90%;
-      margin: 20px auto;
+      margin-top: 20px;
       text-align: right;
       font-size: 20px;
       font-weight: bold;
     }
-
     .clear-all {
-      display: block; width: 200px; margin: 20px auto; padding: 10px;
-      font-size: 18px; background: #444; color: white;
-      text-align:center; border-radius: 6px; cursor: pointer; text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #555;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .clear-all:hover {
+      background-color: #333;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <a href="index.html">← Quay về trang chủ</a>
-</header>
+  <div class="cart-wrapper">
+    <h2>Giỏ hàng của bạn</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+          <th>Xóa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS chèn dòng sản phẩm -->
+      </tbody>
+    </table>
+    <div class="total-box" id="total-price">Tổng: 0 đ</div>
+    <button class="clear-all" onclick="clearCart()">Xóa toàn bộ giỏ hàng</button>
+  </div>
 
-<h2>Giỏ hàng của bạn</h2>
-
-<table id="cart-table">
-  <thead>
-    <tr>
-      <th>Sản phẩm</th>
-      <th>Giá</th>
-      <th>Số lượng</th>
-      <th>Thành tiền</th>
-      <th>Xóa</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<div class="total-box" id="total-price">Tổng: 0đ</div>
-
-<a class="clear-all" onclick="clearCart()">Xóa toàn bộ giỏ hàng</a>
-
-<script>
-  function getCart() {
-    return JSON.parse(localStorage.getItem("cart")) || [];
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  function loadCart() {
-    const cart = getCart();
-    const tbody = document.querySelector("#cart-table tbody");
-    tbody.innerHTML = "";
-    let total = 0;
-
-    if (cart.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="5" style="padding:20px;">Giỏ hàng trống</td></tr>`;
-      document.getElementById("total-price").textContent = "Tổng: 0đ";
-      return;
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    cart.forEach((item, index) => {
-      const itemTotal = item.price * item.qty;
-      total += itemTotal;
+    function loadCart() {
+      const cart = getCart();
+      const tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
+      let total = 0;
 
-      const row = `
-        <tr>
+      if (cart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px;">Giỏ hàng trống</td></tr>`;
+        document.getElementById('total-price').textContent = 'Tổng: 0 đ';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
           <td>
-            <img src="${item.image || 'https://via.placeholder.com/70'}">
-            <br>${item.name}
+            <div class="product-info">
+              <img src="${item.image || 'https://via.placeholder.com/80'}" alt="${item.name}">
+              <div>${item.name}</div>
+            </div>
           </td>
-          <td>${item.price.toLocaleString()}đ</td>
+          <td>${item.price.toLocaleString()} đ</td>
           <td>
             <div class="quantity">
               <button onclick="changeQty(${index}, -1)">-</button>
@@ -120,44 +164,39 @@
               <button onclick="changeQty(${index}, 1)">+</button>
             </div>
           </td>
-          <td>${itemTotal.toLocaleString()}đ</td>
+          <td>${itemTotal.toLocaleString()} đ</td>
           <td><button class="remove-btn" onclick="removeItem(${index})">Xóa</button></td>
-        </tr>
-      `;
+        `;
+        tbody.appendChild(tr);
+      });
 
-      tbody.innerHTML += row;
-    });
+      document.getElementById('total-price').textContent = 'Tổng: ' + total.toLocaleString() + ' đ';
+    }
 
-    document.getElementById("total-price").textContent =
-      "Tổng: " + total.toLocaleString() + "đ";
-  }
-
-  function changeQty(index, delta) {
-    const cart = getCart();
-    cart[index].qty += delta;
-
-    if (cart[index].qty < 1) cart[index].qty = 1;
-
-    saveCart(cart);
-    loadCart();
-  }
-
-  function removeItem(index) {
-    const cart = getCart();
-    cart.splice(index, 1);
-    saveCart(cart);
-    loadCart();
-  }
-
-  function clearCart() {
-    if (confirm("Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?")) {
-      localStorage.removeItem("cart");
+    function changeQty(index, delta) {
+      const cart = getCart();
+      cart[index].qty += delta;
+      if (cart[index].qty < 1) cart[index].qty = 1;
+      saveCart(cart);
       loadCart();
     }
-  }
 
-  window.onload = loadCart;
-</script>
+    function removeItem(index) {
+      const cart = getCart();
+      cart.splice(index, 1);
+      saveCart(cart);
+      loadCart();
+    }
+
+    function clearCart() {
+      if (confirm('Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?')) {
+        localStorage.removeItem('cart');
+        loadCart();
+      }
+    }
+
+    window.onload = loadCart;
+  </script>
 
 </body>
 </html>
