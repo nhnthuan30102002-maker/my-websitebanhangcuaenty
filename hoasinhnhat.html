@@ -3,60 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entyshop - Hoa Sinh Nhật</title>
-
+<title>Giỏ hoa - Entyshop</title>
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; background-color:#fffdfd; color:#333; }
-a { text-decoration:none; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #fffdfd; color: #333; }
+a { text-decoration: none; }
 
 /* HEADER */
-header { background:#555; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:99; }
-header h1 { font-size:24px; letter-spacing:1px; }
-nav a { color:white; margin-left:20px; font-weight:bold; }
-nav a:hover { text-decoration:underline; }
+header {
+  background-color: #555;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+header h1 { font-size: 24px; }
+nav a { color: white; margin-left: 20px; font-weight: bold; }
+nav a:hover { text-decoration: underline; }
 
 /* BANNER */
-.banner { height:320px; display:flex; justify-content:center; align-items:center; color:white; text-shadow:2px 2px 4px #000; font-size:36px; font-weight:bold; border-radius:12px; margin:20px; text-align:center; background-size:cover; background-position:center; }
+.banner {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+  font-size: 36px;
+  font-weight: bold;
+  border-radius: 12px;
+  margin: 20px;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80')
+              center/cover no-repeat;
+}
 
-/* SLOGAN & PROMO */
 .slogan { text-align:center; font-size:20px; margin:20px 0; color:#555; }
 
-/* SECTION TITLE */
-.section-title { text-align:center; margin:40px 0 10px; font-size:28px; color:#555; }
-
 /* PRODUCT GRID */
-.product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px; padding:0 40px 40px; }
-.product-card { background:white; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); overflow:hidden; text-align:center; transition:0.3s; padding-bottom:15px; }
-.product-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+.product-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:24px;
+  padding:0 40px 40px;
+}
+.product-card {
+  background:white;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  overflow:hidden;
+  text-align:center;
+  transition:0.3s;
+  padding-bottom:15px;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
 .product-card img { width:100%; height:240px; object-fit:cover; transition:0.3s; }
-.product-card:hover img { filter:brightness(1.2); }
+.product-card:hover img { filter: brightness(1.2); }
 .product-card h3 { margin:12px 0; color:#ff7ca8; }
 .product-card p { color:#777; margin-bottom:5px; }
-.product-card .price { color:#e02963; font-weight:bold; font-size:16px; margin-bottom:5px; }
-.product-card button { background:#ff7ca8; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; transition:0.3s; margin-top:5px; }
-.product-card button:hover { background:#e02963; }
-.product-card .view-cart { display:block; margin-top:5px; font-size:14px; color:#555; }
-.product-card .view-cart:hover { color:#e02963; }
 
 /* FOOTER */
-footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 20px; margin-top:40px; }
-.footer-container { max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:40px; }
-.footer-column { flex:1 1 250px; text-align:center; }
+footer {
+  background-color: #a8d5ba;
+  color: #333;
+  padding: 40px 20px;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.footer-column { flex: 1 1 250px; text-align:center; }
 .footer-column h4 { margin-bottom:12px; font-size:18px; }
 .footer-column p, .footer-column a { font-size:14px; line-height:1.6; }
-.footer-column a:hover { color:#e02963; }
+.footer-column a:hover { color: #e02963; }
 .social-icons { display:flex; justify-content:center; gap:10px; margin-top:10px; }
-.social-icons a { display:inline-block; width:30px; height:30px; background:#fff; color:#555; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; transition:0.3s; }
+.social-icons a {
+  display:inline-block; width:30px; height:30px;
+  background:#fff; color:#555; border-radius:50%;
+  text-align:center; line-height:30px; font-weight:bold;
+  transition:0.3s;
+}
 .social-icons a:hover { background:#e02963; color:white; }
 
 @media(max-width:768px){
-  .footer-container { flex-direction:column; gap:20px; }
+  .footer-container { flex-direction: column; gap: 20px; }
+  .product-grid { padding:0 20px 40px; }
 }
 </style>
 </head>
-
 <body>
+
 <header>
   <h1>Entyshop</h1>
   <nav>
@@ -70,37 +115,24 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
 </header>
 
 <div class="banner">Hoa Sinh Nhật 🌸</div>
-<div class="slogan">Chọn hoa tươi để gửi yêu thương đến người thân yêu 💖</div>
+<div class="slogan">bó hoa xinh tươi – Mừng Sinh Nhật💖</div>
 
-<div class="section-title">Các sản phẩm hoa sinh nhật</div>
-
-<!-- PRODUCT LIST -->
 <div class="product-grid">
-  <div class="product-card" data-name="Hoa Sinh Nhật 01" data-price="450000" data-image="images/sp2.jpg">
-    <img src="images/sp2.jpg" alt="Hoa Sinh Nhật 01">
-    <h3>Hoa Sinh Nhật 01</h3>
-    <p class="price"></p>
-    <p>Hoa tươi Entyshop</p>
-    <button class="add-to-cart">Thêm vào giỏ hàng</button>
-    <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=21" alt="Giỏ hoa 1">
+    <h3>Hoa Màu Đỏ </h3><p>200.000đ</p>
   </div>
-
-  <div class="product-card" data-name="Hoa Sinh Nhật 02" data-price="500000" data-image="images/sp6.jpg">
-    <img src="images/sp6.jpg" alt="Hoa Sinh Nhật 02">
-    <h3>Hoa Sinh Nhật 02</h3>
-    <p class="price"></p>
-    <p>Hoa tươi Entyshop</p>
-    <button class="add-to-cart">Thêm vào giỏ hàng</button>
-    <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=22" alt="Giỏ hoa 2">
+    <h3>Hoa Màu Vàng</h3><p>250.000đ</p>
   </div>
-
-  <div class="product-card" data-name="Hoa Sinh Nhật 03" data-price="600000" data-image="images/sp7.jpg">
-    <img src="images/sp7.jpg" alt="Hoa Sinh Nhật 03">
-    <h3>Hoa Sinh Nhật 03</h3>
-    <p class="price"></p>
-    <p>Hoa tươi Entyshop</p>
-    <button class="add-to-cart">Thêm vào giỏ hàng</button>
-    <a href="cart.html" class="view-cart">Xem giỏ hàng</a>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=23" alt="Giỏ hoa 3">
+    <h3>Hoa Màu Cam</h3><p>300.000đ</p>
+  </div>
+  <div class="product-card">
+    <img src="https://picsum.photos/400/300?random=24" alt="Giỏ hoa 4">
+    <h3>Hoa Màu Trắng</h3><p>220.000đ</p>
   </div>
 </div>
 
@@ -112,14 +144,14 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
     </div>
     <div class="footer-column">
       <h4>Liên hệ</h4>
-      <p>📍 381 Nguyễn Chí Thanh, Tràm Chim, Tam Nông, Đồng Tháp</p>
+      <p>📍 381 Nguyễn Chí Thanh, T.T Tràm Chim, Huyện Tam Nông, Đồng Tháp</p>
       <p>📞 0372 750 669</p>
       <p>✉ nhnthuan30102002@gmail.com</p>
     </div>
     <div class="footer-column">
-      <h4>Kết nối</h4>
+      <h4>Kết nối với chúng tôi</h4>
       <div class="social-icons">
-        <a href="https://www.facebook.com/fakedev3010">F</a>
+        <a href="https://www.facebook.com/fakedev3010" title="Facebook">F</a>
       </div>
     </div>
   </div>
@@ -127,44 +159,6 @@ footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 2
     © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
   </div>
 </footer>
-
-<script>
-/* Hiển thị giá tiền tự động */
-document.querySelectorAll(".product-card").forEach(card => {
-  const price = parseInt(card.dataset.price);
-  const priceElem = card.querySelector(".price");
-  priceElem.textContent = price.toLocaleString('vi-VN') + "₫";
-});
-
-/* Cart Functions */
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-}
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-document.querySelectorAll(".add-to-cart").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    const card = btn.closest(".product-card");
-    const name  = card.dataset.name;
-    const price = parseInt(card.dataset.price);
-    const image = card.dataset.image;
-
-    let cart = getCart();
-    const found = cart.find(item => item.name === name);
-
-    if (found) {
-      found.qty++;
-    } else {
-      cart.push({ name, price, qty:1, image });
-    }
-
-    saveCart(cart);
-    alert(name + " đã được thêm vào giỏ hàng!");
-  });
-});
-</script>
 
 </body>
 </html>
