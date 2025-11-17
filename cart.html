@@ -100,6 +100,62 @@
     .clear-all:hover {
       background-color: #333;
     }
+
+    /* FOOTER */
+    footer {
+      background-color: #a8d5ba;
+      color: #333;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .footer-column {
+      flex: 1 1 250px;
+      text-align: center;
+    }
+    .footer-column h4 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    .footer-column p, .footer-column a {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .footer-column a:hover {
+      color: #e02963;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      color: #555;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      background: #e02963;
+      color: white;
+    }
+    @media(max-width:768px){
+      .footer-container { flex-direction: column; gap: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -197,28 +253,31 @@
 
     window.onload = loadCart;
   </script>
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h4>Về Entyshop</h4>
-      <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
-    </div>
-    <div class="footer-column">
-      <h4>Liên hệ</h4>
-      <p>📍 381 Nguyễn Chí Thanh, Tràm Chim, Tam Nông, Đồng Tháp</p>
-      <p>📞 0372 750 669</p>
-      <p>✉ nhnthuan30102002@gmail.com</p>
-    </div>
-    <div class="footer-column">
-      <h4>Kết nối</h4>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/fakedev3010">F</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Về Entyshop</h4>
+        <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Liên hệ</h4>
+        <p>📍 381 Nguyễn Chí Thanh, Tràm Chim, Tam Nông, Đồng Tháp</p>
+        <p>📞 0372 750 669</p>
+        <p>✉ nhnthuan30102002@gmail.com</p>
+      </div>
+      <div class="footer-column">
+        <h4>Kết nối</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/fakedev3010">F</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div style="text-align:center; margin-top:20px; font-size:14px;">
-    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-  </div>
-</footer>
+    <div style="text-align:center; margin-top:20px; font-size:14px;">
+      © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+    </div>
+  </footer>
+
 </body>
 </html>
