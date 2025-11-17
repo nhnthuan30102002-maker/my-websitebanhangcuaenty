@@ -1,211 +1,189 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giỏ hàng - Entyshop</title>
-<style>
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; background:#fffdfd; color:#333; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng - Entyshop</title>
 
-/* HEADER */
-header {
-  background-color:#555; color:white; padding:15px 30px;
-  display:flex; justify-content:space-between; align-items:center;
-  position:sticky; top:0; z-index:99;
-}
-header h1 { font-size:24px; }
-nav a { color:white; margin-left:20px; font-weight:bold; text-decoration:none; }
-nav a:hover { text-decoration:underline; }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+    }
 
-/* PAGE TITLE */
-.page-title { text-align:center; font-size:32px; margin:30px 0; color:#ff7ca8; }
+    header {
+      background: #333;
+      padding: 15px;
+      text-align: center;
+    }
 
-/* CART CONTAINER */
-.cart-container {
-  max-width:1000px;
-  margin: auto;
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
+    header a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+    }
 
-/* CART TABLE */
-.cart-table { width:100%; border-collapse: collapse; }
-.cart-table th, .cart-table td { padding:15px 10px; border-bottom:1px solid #eee; text-align:center; }
-.cart-table th { background:#f7f7f7; font-weight:bold; }
-.product-info { display:flex; align-items:center; }
-.product-info img { width:80px; height:80px; object-fit:cover; border-radius:8px; margin-right:15px; }
-.quantity { display:flex; align-items:center; justify-content:center; }
-.quantity button { background:#ddd; border:none; padding:5px 10px; cursor:pointer; border-radius:5px; font-size:16px; }
-.quantity span { margin:0 10px; min-width:20px; text-align:center; }
-.remove-btn { background:#e02963; color:white; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; }
-.remove-btn:hover { background:#c0174a; }
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-/* TOTAL & CLEAR */
-.total { text-align:right; font-size:20px; font-weight:bold; margin-top:20px; }
-.clear-cart { margin-top:20px; padding:10px 20px; background:#555; color:white; border:none; border-radius:5px; cursor:pointer; }
-.clear-cart:hover { background:#333; }
+    table {
+      width: 90%;
+      margin: 0 auto;
+      background: white;
+      border-collapse: collapse;
+    }
 
-/* FOOTER */
-footer {
-  background-color: #a8d5ba;
-  color: #333;
-  padding: 40px 20px;
-}
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-.footer-column { flex:1 1 250px; text-align:center; }
-.footer-column h4 { margin-bottom:12px; font-size:18px; }
-.footer-column p, .footer-column a { font-size:14px; line-height:1.6; }
-.footer-column a:hover { color: #e02963; }
-.social-icons { display:flex; justify-content:center; gap:10px; margin-top:10px; }
-.social-icons a { display:inline-block; width:30px; height:30px; background:#fff; color:#555; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; transition:0.3s; }
-.social-icons a:hover { background:#e02963; color:white; }
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
 
-@media(max-width:768px){
-  .cart-container { padding:20px; margin:20px; }
-  .cart-table th, .cart-table td { font-size:14px; padding:10px; }
-}
-</style>
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .quantity button {
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .total-box {
+      width: 90%;
+      margin: 20px auto;
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .clear-all {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 18px;
+      background: #444;
+      color: white;
+      text-align:center;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Entyshop</h1>
-  <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="hoasinhnhat.html">Hoa sinh nhật</a>
-    <a href="bohoa.html">Bó hoa</a>
-    <a href="giohoa.html">Giỏ hoa</a>
-    <a href="contact.html">Liên hệ</a>
-    <a href="cart.html">Giỏ hàng</a>
-  </nav>
+  <a href="index.html">← Quay về trang chủ</a>
 </header>
 
-<div class="page-title">Giỏ hàng của bạn</div>
+<h2>Giỏ hàng của bạn</h2>
 
-<div class="cart-container">
-  <table class="cart-table" id="cart-table">
-    <thead>
-      <tr>
-        <th>Sản phẩm</th>
-        <th>Giá</th>
-        <th>Số lượng</th>
-        <th>Thành tiền</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- JS chèn sản phẩm -->
-    </tbody>
-  </table>
-  <div class="total" id="total-price">Tổng: 0đ</div>
-  <button class="clear-cart" onclick="clearCart()">Xóa tất cả</button>
-</div>
+<table id="cart-table">
+  <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Thành tiền</th>
+      <th>Xóa</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h4>Về Entyshop</h4>
-      <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
-    </div>
-    <div class="footer-column">
-      <h4>Liên hệ</h4>
-      <p>📍 381 Nguyễn Chí Thanh, T.T Tràm Chim, Huyện Tam Nông, Đồng Tháp</p>
-      <p>📞 0372 750 669</p>
-      <p>✉ nhnthuan30102002@gmail.com</p>
-    </div>
-    <div class="footer-column">
-      <h4>Kết nối với chúng tôi</h4>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/fakedev3010" title="Facebook">F</a>
-      </div>
-    </div>
-  </div>
-  <div style="text-align:center; margin-top:20px; font-size:14px;">
-    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-  </div>
-</footer>
+<div class="total-box" id="total-price">Tổng: 0đ</div>
+
+<a class="clear-all" onclick="clearCart()">Xóa toàn bộ giỏ hàng</a>
 
 <script>
-// Lấy giỏ hàng từ localStorage
-function getCart(){ return JSON.parse(localStorage.getItem('cart')) || []; }
-function saveCart(cart){ localStorage.setItem('cart', JSON.stringify(cart)); }
+  function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
 
-// Hiển thị giỏ hàng
-function loadCart(){
-  const cart = getCart();
-  const tbody = document.querySelector('#cart-table tbody');
-  tbody.innerHTML = '';
-  let total = 0;
+  function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
 
-  if(cart.length === 0){
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px;">Giỏ hàng trống</td></tr>`;
-  } else {
-    cart.forEach((item,index)=>{
+  function loadCart() {
+    const cart = getCart();
+    const tbody = document.querySelector("#cart-table tbody");
+    tbody.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" style="padding:20px;">Giỏ hàng trống</td></tr>`;
+      document.getElementById("total-price").textContent = "Tổng: 0đ";
+      return;
+    }
+
+    cart.forEach((item, index) => {
       const itemTotal = item.price * item.qty;
       total += itemTotal;
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>
-          <div class="product-info">
-            <img src="${item.image || 'https://via.placeholder.com/80'}" alt="${item.name}">
-            <span>${item.name}</span>
-          </div>
-        </td>
-        <td>${item.price.toLocaleString()}đ</td>
-        <td>
-          <div class="quantity">
-            <button onclick="changeQuantity(${index},-1)">-</button>
-            <span>${item.qty}</span>
-            <button onclick="changeQuantity(${index},1)">+</button>
-          </div>
-        </td>
-        <td>${itemTotal.toLocaleString()}đ</td>
-        <td><button class="remove-btn" onclick="removeItem(${index})">Xóa</button></td>
+
+      const row = `
+        <tr>
+          <td><img src="${item.image || 'https://via.placeholder.com/70'}"> <br>${item.name}</td>
+          <td>${item.price.toLocaleString()}đ</td>
+          <td>
+            <div class="quantity">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </td>
+          <td>${itemTotal.toLocaleString()}đ</td>
+          <td><button class="remove-btn" onclick="removeItem(${index})">Xóa</button></td>
+        </tr>
       `;
-      tbody.appendChild(tr);
+
+      tbody.innerHTML += row;
     });
+
+    document.getElementById("total-price").textContent = "Tổng: " + total.toLocaleString() + "đ";
   }
 
-  document.getElementById('total-price').textContent = 'Tổng: ' + total.toLocaleString() + 'đ';
-}
+  function changeQty(index, delta) {
+    const cart = getCart();
+    cart[index].qty += delta;
 
-// Tăng/giảm số lượng
-function changeQuantity(index, delta){
-  const cart = getCart();
-  cart[index].qty += delta;
-  if(cart[index].qty < 1) cart[index].qty = 1;
-  saveCart(cart);
-  loadCart();
-}
+    if (cart[index].qty < 1) cart[index].qty = 1;
 
-// Xóa sản phẩm
-function removeItem(index){
-  const cart = getCart();
-  cart.splice(index,1);
-  saveCart(cart);
-  loadCart();
-}
-
-// Xóa toàn bộ giỏ hàng
-function clearCart(){
-  if(confirm('Bạn có chắc muốn xoá tất cả?')){
-    localStorage.removeItem('cart');
+    saveCart(cart);
     loadCart();
   }
-}
 
-// Load khi mở trang
-window.onload = loadCart;
+  function removeItem(index) {
+    const cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    loadCart();
+  }
+
+  function clearCart() {
+    if (confirm("Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?")) {
+      localStorage.removeItem("cart");
+      loadCart();
+    }
+  }
+
+  window.onload = loadCart;
 </script>
 
 </body>
