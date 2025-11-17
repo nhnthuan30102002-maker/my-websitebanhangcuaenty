@@ -1,283 +1,180 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Giỏ hàng - Entyshop</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
-    .cart-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table thead th {
-      padding: 12px;
-      border-bottom: 2px solid #ddd;
-      text-align: left;
-      font-weight: bold;
-    }
-    table tbody td {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-      vertical-align: middle;
-    }
-    table tbody tr:last-child td {
-      border-bottom: none;
-    }
-    .product-info {
-      display: flex;
-      align-items: center;
-    }
-    .product-info img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-right: 15px;
-    }
-    .quantity {
-      display: flex;
-      align-items: center;
-    }
-    .quantity button {
-      padding: 4px 8px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      background: white;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .quantity span {
-      margin: 0 8px;
-      min-width: 24px;
-      text-align: center;
-    }
-    .remove-btn {
-      background-color: #e74c3c;
-      color: white;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .remove-btn:hover {
-      background-color: #c0392b;
-    }
-    .total-box {
-      margin-top: 20px;
-      text-align: right;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .clear-all {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: #555;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .clear-all:hover {
-      background-color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giỏ hàng - Entyshop</title>
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: Arial, sans-serif; background-color:#fffdfd; color:#333; }
 
-    /* FOOTER */
-    footer {
-      background-color: #a8d5ba;
-      color: #333;
-      padding: 40px 20px;
-      margin-top: 40px;
-    }
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-    .footer-column {
-      flex: 1 1 250px;
-      text-align: center;
-    }
-    .footer-column h4 {
-      margin-bottom: 12px;
-      font-size: 18px;
-    }
-    .footer-column p, .footer-column a {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .footer-column a:hover {
-      color: #e02963;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .social-icons a {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      background: #fff;
-      color: #555;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .social-icons a:hover {
-      background: #e02963;
-      color: white;
-    }
-    @media(max-width:768px){
-      .footer-container { flex-direction: column; gap: 20px; }
-    }
-  </style>
+/* HEADER */
+header { background:#555; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:99; }
+header h1 { font-size:24px; letter-spacing:1px; }
+nav a { color:white; margin-left:20px; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+
+/* CART WRAPPER */
+.cart-wrapper {
+  max-width: 1000px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.cart-wrapper h2 { text-align:center; margin-bottom:20px; color:#ff7ca8; }
+table { width:100%; border-collapse: collapse; }
+thead th { padding:12px; border-bottom:2px solid #ddd; text-align:left; font-weight:bold; }
+tbody td { padding:12px; border-bottom:1px solid #eee; vertical-align:middle; }
+tbody tr:last-child td { border-bottom:none; }
+.product-info { display:flex; align-items:center; }
+.product-info img { width:80px; height:80px; object-fit:cover; border-radius:6px; margin-right:15px; }
+.quantity { display:flex; align-items:center; }
+.quantity button { padding:4px 8px; font-size:16px; border:1px solid #ccc; background:white; cursor:pointer; border-radius:4px; }
+.quantity span { margin:0 8px; min-width:24px; text-align:center; }
+.remove-btn { background-color:#e74c3c; color:white; padding:6px 12px; border:none; border-radius:4px; cursor:pointer; font-size:14px; }
+.remove-btn:hover { background-color:#c0392b; }
+.total-box { margin-top:20px; text-align:right; font-size:20px; font-weight:bold; }
+.clear-all { margin-top:20px; display:inline-block; background-color:#ff7ca8; color:white; padding:10px 20px; border-radius:5px; cursor:pointer; }
+.clear-all:hover { background-color:#e02963; }
+
+/* FOOTER */
+footer { background-color:#a8d5ba; color:#333; text-align:center; padding:40px 20px; margin-top:40px; }
+.footer-container { max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:40px; }
+.footer-column { flex:1 1 250px; text-align:center; }
+.footer-column h4 { margin-bottom:12px; font-size:18px; }
+.footer-column p, .footer-column a { font-size:14px; line-height:1.6; }
+.footer-column a:hover { color:#e02963; }
+.social-icons { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+.social-icons a { display:inline-block; width:30px; height:30px; background:#fff; color:#555; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; transition:0.3s; }
+.social-icons a:hover { background:#e02963; color:white; }
+@media(max-width:768px){ .footer-container { flex-direction:column; gap:20px; } }
+</style>
 </head>
 <body>
 
-  <div class="cart-wrapper">
-    <h2>Giỏ hàng của bạn</h2>
-    <table id="cart-table">
-      <thead>
-        <tr>
-          <th>Sản phẩm</th>
-          <th>Giá</th>
-          <th>Số lượng</th>
-          <th>Thành tiền</th>
-          <th>Xóa</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- JS chèn dòng sản phẩm -->
-      </tbody>
-    </table>
-    <div class="total-box" id="total-price">Tổng: 0 đ</div>
-    <button class="clear-all" onclick="clearCart()">Xóa toàn bộ giỏ hàng</button>
-  </div>
+<header>
+  <h1>Entyshop</h1>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="hoasinhnhat.html">Hoa sinh nhật</a>
+    <a href="bohoa.html">Bó hoa</a>
+    <a href="giohoa.html">Giỏ hoa</a>
+    <a href="contact.html">Liên hệ</a>
+    <a href="cart.html">Giỏ hàng</a>
+  </nav>
+</header>
 
-  <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    }
-    function saveCart(cart) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
+<div class="cart-wrapper">
+  <h2>Giỏ hàng của bạn</h2>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="total-box" id="total-price">Tổng: 0 đ</div>
+  <button class="clear-all" onclick="clearCart()">Xóa toàn bộ giỏ hàng</button>
+</div>
 
-    function loadCart() {
-      const cart = getCart();
-      const tbody = document.querySelector('#cart-table tbody');
-      tbody.innerHTML = '';
-      let total = 0;
+<script>
+function getCart() { return JSON.parse(localStorage.getItem('cart')) || []; }
+function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 
-      if (cart.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px;">Giỏ hàng trống</td></tr>`;
-        document.getElementById('total-price').textContent = 'Tổng: 0 đ';
-        return;
-      }
+function loadCart() {
+  const cart = getCart();
+  const tbody = document.querySelector('#cart-table tbody');
+  tbody.innerHTML = '';
+  let total = 0;
 
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.qty;
-        total += itemTotal;
+  if(cart.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px;">Giỏ hàng trống</td></tr>`;
+    document.getElementById('total-price').textContent = 'Tổng: 0 đ';
+    return;
+  }
 
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>
-            <div class="product-info">
-              <img src="${item.image || 'https://via.placeholder.com/80'}" alt="${item.name}">
-              <div>${item.name}</div>
-            </div>
-          </td>
-          <td>${item.price.toLocaleString()} đ</td>
-          <td>
-            <div class="quantity">
-              <button onclick="changeQty(${index}, -1)">-</button>
-              <span>${item.qty}</span>
-              <button onclick="changeQty(${index}, 1)">+</button>
-            </div>
-          </td>
-          <td>${itemTotal.toLocaleString()} đ</td>
-          <td><button class="remove-btn" onclick="removeItem(${index})">Xóa</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      document.getElementById('total-price').textContent = 'Tổng: ' + total.toLocaleString() + ' đ';
-    }
-
-    function changeQty(index, delta) {
-      const cart = getCart();
-      cart[index].qty += delta;
-      if (cart[index].qty < 1) cart[index].qty = 1;
-      saveCart(cart);
-      loadCart();
-    }
-
-    function removeItem(index) {
-      const cart = getCart();
-      cart.splice(index, 1);
-      saveCart(cart);
-      loadCart();
-    }
-
-    function clearCart() {
-      if (confirm('Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?')) {
-        localStorage.removeItem('cart');
-        loadCart();
-      }
-    }
-
-    window.onload = loadCart;
-  </script>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h4>Về Entyshop</h4>
-        <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
-      </div>
-      <div class="footer-column">
-        <h4>Liên hệ</h4>
-        <p>📍 381 Nguyễn Chí Thanh, Tràm Chim, Tam Nông, Đồng Tháp</p>
-        <p>📞 0372 750 669</p>
-        <p>✉ nhnthuan30102002@gmail.com</p>
-      </div>
-      <div class="footer-column">
-        <h4>Kết nối</h4>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/fakedev3010">F</a>
+  cart.forEach((item,index)=>{
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <div class="product-info">
+          <img src="${item.image || 'https://via.placeholder.com/80'}" alt="${item.name}">
+          <div>${item.name}</div>
         </div>
+      </td>
+      <td>${item.price.toLocaleString()} đ</td>
+      <td>
+        <div class="quantity">
+          <button onclick="changeQty(${index}, -1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${index}, 1)">+</button>
+        </div>
+      </td>
+      <td>${itemTotal.toLocaleString()} đ</td>
+      <td><button class="remove-btn" onclick="removeItem(${index})">Xóa</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('total-price').textContent = 'Tổng: ' + total.toLocaleString() + ' đ';
+}
+
+function changeQty(index, delta){
+  const cart = getCart();
+  cart[index].qty += delta;
+  if(cart[index].qty < 1) cart[index].qty = 1;
+  saveCart(cart);
+  loadCart();
+}
+
+function removeItem(index){
+  const cart = getCart();
+  cart.splice(index,1);
+  saveCart(cart);
+  loadCart();
+}
+
+function clearCart(){
+  if(confirm('Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?')){
+    localStorage.removeItem('cart');
+    loadCart();
+  }
+}
+
+window.onload = loadCart;
+</script>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Về Entyshop</h4>
+      <p>Entyshop – Cửa hàng hoa tươi cho mọi khoảnh khắc. Cam kết hoa tươi 100% và giao hàng nhanh chóng.</p>
+    </div>
+    <div class="footer-column">
+      <h4>Liên hệ</h4>
+      <p>📍 381 Nguyễn Chí Thanh, Tràm Chim, Tam Nông, Đồng Tháp</p>
+      <p>📞 0372 750 669</p>
+      <p>✉ nhnthuan30102002@gmail.com</p>
+    </div>
+    <div class="footer-column">
+      <h4>Kết nối</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/fakedev3010">F</a>
       </div>
     </div>
-    <div style="text-align:center; margin-top:20px; font-size:14px;">
-      © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
-    </div>
-  </footer>
+  </div>
+  <div style="text-align:center; margin-top:20px; font-size:14px;">
+    © 2025 Entyshop - Hoa tươi cho mọi khoảnh khắc
+  </div>
+</footer>
 
 </body>
 </html>
